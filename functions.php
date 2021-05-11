@@ -20,15 +20,12 @@ function imeline_ajalugu_styles() {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'imeline_ajalugu_styles');
-
-
 function imeline_ajalugu_scripts() {
 	wp_enqueue_script('imeline_ajalugu_js', get_template_directory_uri() . "/src/js/bundle.js", array(), '1.0',true );
 
 }
 
-add_action( 'wp_enqueue_scripts', 'imeline_ajalugu_scripts');
+add_action( 'wp_enqueue_scripts', 'imeline_ajalugu_styles', 'imeline_ajalugu_scripts');
 
 
 
