@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.mobile-container {
+    @include mobile {
+        padding: 0px 1.563rem;
+        width: 100%;
+        float: none;
+        @include displayFlexColumn;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.contents,
+.cover,
+.footer_text {
+    max-width: 58.688rem;
+}
+
+.contents {
+    justify-content: center;
+    margin: 0 auto;
+
+    @include displayFlexColumn;
+    @include mobile {
+        padding: 0px 1.563rem;
+        width: 100%;
+        float: none;
+        @include displayFlexColumn;
+        justify-content: center;
+        align-items: center;
+    };
+}

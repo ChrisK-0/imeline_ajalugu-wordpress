@@ -1,0 +1,57 @@
+/* sass variables */
+/* x/3 selected themes font */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
+
+$color-white: #fff;
+$color-gray: #ccc;
+$color-darkgray: #999;
+$color-black: #000;
+
+
+$color-cover-font: #222;
+$color-btn-font:#e2e2e2;
+$color-btn-background:#b1b1b1;
+$color-btn-disabled: #c0c0c0;
+
+$color-panel-brown: #3f2916;
+$color-panel-border: #fff8cd;
+$color-active-header: #ffeb6b;
+$color-active-header-light: #ffef80;
+$color-active-header-dark: #ffe756;
+$color-accordion-border: #ffe756;
+$color-anchor-red: #a62300;
+$color-description-red: #951c00;
+$color-ribbon-light: #cc3e0f;
+$color-ribbon-dark: #931b00;
+$color-footer: #3b3530;
+$color-button-red-light: #b72a00;
+$color-button-red-dark: #951c00;
+$color-button-red-shadow: #c55230;
+$color-button-red-border: #7b1700;
+$color-modal-background: #fefefe;
+$color-modal-border: #888;
+$color-modal-btn: #aaa;
+$color-image-border: #eee;
+
+// custom checkmark coloring
+$color-checkmark-checked: #fff6bf;
+$color-checkmark-checked-border: #f0ce00;
+$color-checkmark-border-top: #787878;
+$color-checkmark-border-right: #b3b3b3;
+$color-checkmark-border-bottom: #dbdbdb;
+$color-checkmark-border-left: #b3b3b3;
+$color-checkmark-background: #efefef;
+
+$line-height-big: 1.5;
+$line-height-regular: 0.8;
+$line-height-smaller: 0.7;
+
+$font-family-primary: 'PT Sans Narrow',sans-serif;
+$font-family-secondary: "Bienetresocial";
+$font-family-tertiary: 'PT Sans', sans-serif;
+
+// font sizes
+$font-size-verybig: 7.313rem;
+$font-size-big: 1.875rem;
+$font-size-regular: 1.25rem;
+$font-size-small: 1rem;
