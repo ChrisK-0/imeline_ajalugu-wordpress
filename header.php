@@ -45,7 +45,7 @@
 
             <div class="cover_anchor">
                 <a id="gotoAccordionAnchor">
-                    <p><img class="cover_anchor-arrow" src="wp-content/themes/imeline_ajalugu/src/imgs/goto_arrow_down.png">Vali oma lemmikartiklid</p>
+                    <p><img class="cover_anchor-arrow" src="wp-content/themes/imeline_ajalugu/assets/imgs/goto_arrow_down.png">Vali oma lemmikartiklid</p>
                 </a>
             </div>
     </div>
@@ -79,7 +79,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -95,7 +95,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -113,7 +113,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -131,7 +131,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -162,7 +162,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -180,7 +180,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -198,7 +198,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -216,7 +216,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -247,7 +247,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -265,7 +265,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -283,7 +283,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -301,7 +301,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">
@@ -320,7 +320,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/src/imgs/Layer 26.png">
+                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">

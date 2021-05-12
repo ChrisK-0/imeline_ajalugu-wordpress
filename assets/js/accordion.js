@@ -1,5 +1,4 @@
 import {globalVariables} from './constants';
-
 const accordionPanel = document.getElementsByClassName('panel');
 const accordionHeader = document.getElementsByClassName('accordion_header');
 
@@ -8,7 +7,7 @@ for (let i of globalVariables.accordionBtn) {
   i.onclick = function () {
     const toggleActiveClass = !this.classList.contains('active');
     classToggler(globalVariables.accordionBtn, 'active', 'remove');
-    classToggler(accordionPanel, 'accord_show', 'remove');
+    classToggler(accordionPanel, 'accordion_show', 'remove');
     classToggler(accordionHeader, 'accordion_header-active', 'remove');
     classToggler(globalVariables.themeChangeBtn, 'themeBtnActive', 'remove');
 
@@ -18,7 +17,7 @@ for (let i of globalVariables.accordionBtn) {
 
     if (toggleActiveClass) {
       this.classList.toggle("active");
-      this.nextElementSibling.classList.toggle("accord_show");
+      this.nextElementSibling.classList.toggle("accordion_show");
       this.children[0].classList.toggle("accordion_header-active");
 
       if (checkThemeBtnClass) {

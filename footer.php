@@ -10,7 +10,7 @@
                 </p>
             </div>
             <div class="description_img mobile-container">
-                <img src="wp-content/themes/imeline_ajalugu/src/imgs/covers.png">
+                <img src="wp-content/themes/imeline_ajalugu/assets/imgs/covers.png">
             </div>
         </div>
 
