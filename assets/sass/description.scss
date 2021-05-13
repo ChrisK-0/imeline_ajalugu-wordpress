@@ -17,7 +17,13 @@
     &_text {
         flex-grow: 3;
         padding-bottom: 59px;
-        font-family: $font-family-primary;        
+        font-family: $font-family-primary;
+        
+        p {
+            flex-grow: 3;
+            padding-bottom: 59px;
+            font-family: $font-family-primary;
+        }
 
         span {
             color: $color-description-red;

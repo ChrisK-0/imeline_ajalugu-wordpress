@@ -35,17 +35,28 @@
                 <p class="cover_title">
                     <span class="cover_title-transform">IMELINE</span>Ajalugu
                 </p>
-                <p class="cover_paragraph">
-                    Vali nende põnevate lugude seast välja enda lemmikud.
-                    Sinu ja teiste lugejate soovide põhjal paneme kokku ajakirja novembri numbri.
-                    Nii sünnib Eesti esimene lugejate poolt kokku pandud ajakiri, mille Sina võid saada endale
-                    tasuta!
-                </p>
+
+
+                <!-- class="cover_paragraph" -->
+                <?php 
+                    $post_id = 22;
+                    $post = get_post($post_id);
+                    $blocks = parse_blocks($post->post_content);
+                    foreach ($blocks as $block) {
+                        if ($block['blockName'] != 'core/shortcode') {
+                            echo render_block($block);
+                        }
+                    }
+                    
+                    $blocks[0];
+                ?>
+
+
             </div>
 
             <div class="cover_anchor">
                 <a id="gotoAccordionAnchor">
-                    <p><img class="cover_anchor-arrow" src="wp-content/themes/imeline_ajalugu/assets/imgs/goto_arrow_down.png">Vali oma lemmikartiklid</p>
+                    <p><img class="cover_anchor-arrow" src="../assets/imgs/goto_arrow_down.png">Vali oma lemmikartiklid</p>
                 </a>
             </div>
     </div>
@@ -79,7 +90,7 @@
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
-                    <img src="wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
+                    <img src="/wp-content/themes/imeline_ajalugu/assets/imgs/Layer 26.png">
                 </div>
 
                 <div class="panel_text">

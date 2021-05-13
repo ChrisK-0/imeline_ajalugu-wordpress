@@ -2,12 +2,18 @@
 <div class="description">
             <div class="description_text-wrapper mobile-container">
                 <p class="description_text">
-                    <span>Imeline Ajalugu</span> on põhjamaade populaarseim ajalooajakiri, millel
-                    on Eestis üle 50 000 lugeja.
-                    Ajakiri ilmub kord kuus, igas numbris on põnevad ja rikkalikult illustreeritud lood ligi 100
-                    leheküljel.
-                    Imelist Ajalugu annab Eestis välja AS Äripäev alates 2011 aaasta sügisest.
-                </p>
+                <?php 
+                    $post_id = 24;
+                    $post = get_post($post_id);
+                    $blocks = parse_blocks($post->post_content);
+                    foreach ($blocks as $block) {
+                        if ($block['blockName'] != 'core/shortcode') {
+                            echo render_block($block);
+                        }
+                    }
+                    
+                    $blocks[0];
+                ?>
             </div>
             <div class="description_img mobile-container">
                 <img src="wp-content/themes/imeline_ajalugu/assets/imgs/covers.png">

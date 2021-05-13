@@ -437,6 +437,11 @@ body {
   padding-bottom: 59px;
   font-family: "PT Sans Narrow", sans-serif;
 }
+.description_text p {
+  flex-grow: 3;
+  padding-bottom: 59px;
+  font-family: "PT Sans Narrow", sans-serif;
+}
 .description_text span {
   color: #951c00;
   text-decoration: underline;
