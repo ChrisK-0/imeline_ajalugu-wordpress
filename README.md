@@ -24,7 +24,7 @@ Meta fields for the front page can be edited, to display written text. If cover 
 Started accordion creation loop (unfinished). Idea is to create an accordion for every wanted "event theme", then create labels into that accordion with given parent category in "Events".
 
 Meta fields in wordpress
-![Meta fields in wordpress](https://gfycat.com/NegligibleLameAnhinga)
+![Meta fields in wordpress](https://i.imgur.com/ZFCLR9m.png)
 
 Front page meta fields showcase
 ![Front page meta fields showcase](https://gfycat.com/AncientNiceFalcon)
