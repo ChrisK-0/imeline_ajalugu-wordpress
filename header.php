@@ -46,7 +46,7 @@
 
             <div class="cover_anchor">
                 <a id="gotoAccordionAnchor">
-                    <p><img class="cover_anchor-arrow" src="../assets/imgs/goto_arrow_down.png">
+                    <p><img class="cover_anchor-arrow" src="<?php echo get_template_directory_uri();?>/assets/imgs/goto_arrow_down.png">
 
                         <?php
                             the_field('cover_anchor');

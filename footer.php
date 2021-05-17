@@ -1,5 +1,4 @@
-<!-- is supposed to end contents div -->
-</div>
+
 
     <!-- description content -->
     <div class="description">
@@ -10,9 +9,12 @@
             </p>
         </div>
         <div class="description_img mobile-container">
-            <img src="wp-content/themes/imeline_ajalugu/assets/imgs/covers.png">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/covers.png">
         </div>
     </div>
+
+<!-- is supposed to end contents div -->
+</div>
 
     <!-- Footer content -->
     <footer>

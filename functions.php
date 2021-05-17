@@ -87,7 +87,7 @@ function create_categories_hierarchical_taxonomy() {
     'update_item' => __( 'Update category' ),
     'add_new_item' => __( 'Add New category' ),
     'new_item_name' => __( 'New category Name' ),
-    'menu_name' => __( 'categories' ),
+    'menu_name' => __( 'Categories' ),
   );    
 // register the taxonomy
   register_taxonomy('categories',array('custom_event'), array(
