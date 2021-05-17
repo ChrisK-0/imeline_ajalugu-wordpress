@@ -12,7 +12,10 @@
     $terms = get_terms( array(
         'taxonomy'   => 'categories', // Swap in your custom taxonomy name
         'hide_empty' => true, 
-));
+    ));
+
+    // total amount of taxonomies in array
+    $total_of_event_categories = count($terms);
 
 // give accordion a number for uniqueness
 $eventAccordionNumber = 0;
@@ -53,12 +56,13 @@ foreach( $terms as $term ) {
             <div class="panel">
             '; // end echo
 
+
         while($custom_events_posts->have_posts()) : $custom_events_posts->the_post();
             // separate labels for each checkbox inside the div with class "panel"
 
             echo '  
-                <label class="panel_content" for="acc_'.$eventAccordionNumber.'_nr'.$eventPanelNumber.'">
-                <input type="checkbox" class="panel_input" id="acc_'.$eventAccordionNumber.'_nr'.$eventPanelNumber.'">
+                <label class="panel_content" for="accordion_'.$eventAccordionNumber.'_panel'.$eventPanelNumber.'">
+                <input type="checkbox" class="panel_input" id="accordion_'.$eventAccordionNumber.'_panel'.$eventPanelNumber.'">
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
@@ -66,25 +70,33 @@ foreach( $terms as $term ) {
                 </div>
 
                 <div class="panel_text">
-                    <p class="panel_title">'.get_the_title().'</p>
+                    <p class="panel_title">
+                        '.get_the_title().'
+                    </p>
                     <p class="panel_description">
                         '.get_the_content().'
                     </p>
                 </div>
                 </label>
-                '; // end of echo
+                '; // end echo
             $eventPanelNumber++;
 
         endwhile; 
         $eventAccordionNumber++;
         
+        if ( $eventAccordionNumber != $total_of_event_categories ) {
+            echo '
+                <div class="panel_next">
+                    <button class="next_theme">Järgmine teema</button>
+                </div>    
+                '; // end echo
+        }
+
         echo '</div>'; // ends the div with class panel, which holds all the labels for an accordion
 
-    }; 
-    wp_reset_query(); 
+    }; // END IF
 
-
-
+    wp_reset_query();
 
 
 
