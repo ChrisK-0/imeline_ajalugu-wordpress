@@ -29,4 +29,10 @@ Meta fields in wordpress
 Front page meta fields showcase  
 https://user-images.githubusercontent.com/73487474/118296504-b90bc980-b4e5-11eb-9b17-636565e3541b.mp4
 
+## Day 26
 
+### Image custom meta field, next_theme button and accordion per page limiter
+
+Added a custom meta field for images in custom post type Events. Images can be added in the meta field, where you write a title and a paragraph for the according event.
+Next_theme button is now given to all accordions, except the last (like it should be).
+Accordion per page can now be set in Wordpress environment under the front page. Only published posts are counted, but currently there is no way to specify, which event blocks to display.
