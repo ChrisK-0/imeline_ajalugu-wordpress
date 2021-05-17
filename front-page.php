@@ -17,8 +17,17 @@
     // total amount of taxonomies in array
     $total_of_event_categories = count($terms);
 
-// give accordion a number for uniqueness
-$eventAccordionNumber = 0;
+    // give accordion a number for uniqueness
+    $eventAccordionNumber = 0;
+
+    // filter get_the_content, so it doesnt add extra <p> tags
+    $to_strip = get_the_content();
+    $stripped_content = strip_tags($to_strip);
+
+    // accordion per page limiter
+    $current_accordion_number = 0;
+    $accordions_per_page = get_field('accordions_per_page');
+
 
 foreach( $terms as $term ) {
         // create array for events
@@ -41,7 +50,7 @@ foreach( $terms as $term ) {
 
 
     
-    if($custom_events_posts->have_posts()) {
+    if( $custom_events_posts->have_posts() ) {
         // give panels numbers for uniqueness
         $eventPanelNumber = 0;
 
@@ -61,8 +70,8 @@ foreach( $terms as $term ) {
             // separate labels for each checkbox inside the div with class "panel"
 
             echo '  
-                <label class="panel_content" for="accordion_'.$eventAccordionNumber.'_panel'.$eventPanelNumber.'">
-                <input type="checkbox" class="panel_input" id="accordion_'.$eventAccordionNumber.'_panel'.$eventPanelNumber.'">
+                <label class="panel_content" for="accordion-'.$eventAccordionNumber.'_panel-'.$eventPanelNumber.'">
+                <input type="checkbox" class="panel_input" id="accordion-'.$eventAccordionNumber.'_panel-'.$eventPanelNumber.'">
                 <span class="checkmark"></span>
 
                 <div class="panel_img">
@@ -74,7 +83,7 @@ foreach( $terms as $term ) {
                         '.get_the_title().'
                     </p>
                     <p class="panel_description">
-                        '.get_the_content().'
+                        '.$stripped_content.'
                     </p>
                 </div>
                 </label>
@@ -99,8 +108,12 @@ foreach( $terms as $term ) {
     wp_reset_query();
 
 
-
-
+    // increment current accordion number by 1 for each category loop
+    $current_accordion_number++;
+    // if current accordion number is equal to manually set accordions per page, then break the foreach category loop
+    if ($current_accordion_number == $accordions_per_page) {
+        break;
+    }
 } // END TERMS FOREACH
 
 
