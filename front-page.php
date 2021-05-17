@@ -20,9 +20,7 @@
     // give accordion a number for uniqueness
     $eventAccordionNumber = 0;
 
-    // filter get_the_content, so it doesnt add extra <p> tags
-    $to_strip = get_the_content();
-    $stripped_content = strip_tags($to_strip);
+
 
     // accordion per page limiter
     $current_accordion_number = 0;
@@ -69,14 +67,31 @@ foreach( $terms as $term ) {
         while($custom_events_posts->have_posts()) : $custom_events_posts->the_post();
             // separate labels for each checkbox inside the div with class "panel"
 
+            // filter get_the_content, so it doesnt add extra <p> tags
+            $to_strip = get_the_content();
+            $stripped_content = strip_tags($to_strip);
+
+            if ( get_field("event_image") ) {
+                $custom_event_image = '
+                                            <div class="panel_img">
+                                                <img src="'.get_field("event_image").'">
+                                            </div>
+                                            
+                                            '; // end echo
+            } else {
+                $custom_event_image = '
+                                            <div class="panel_img">
+                                                
+                                            </div>
+                                            '; // end echo
+            }
+
             echo '  
                 <label class="panel_content" for="accordion-'.$eventAccordionNumber.'_panel-'.$eventPanelNumber.'">
                 <input type="checkbox" class="panel_input" id="accordion-'.$eventAccordionNumber.'_panel-'.$eventPanelNumber.'">
                 <span class="checkmark"></span>
-
-                <div class="panel_img">
-                    <img src="'.get_template_directory_uri().'/assets/imgs/Layer 26.png">
-                </div>
+                
+                '.$custom_event_image.'
 
                 <div class="panel_text">
                     <p class="panel_title">

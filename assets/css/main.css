@@ -276,13 +276,15 @@ body {
   font-size: 1rem;
   font-family: "PT Sans", sans-serif;
 }
-.panel_img img {
+.panel_img {
   margin-left: 5rem;
   margin-right: 1.563rem;
   width: 5.25rem;
   height: 5.25rem;
-  flex-grow: 1;
-  flex-basis: auto;
+}
+.panel_img img {
+  width: 5.25rem;
+  height: 5.25rem;
   border: 1px solid #eee;
 }
 
