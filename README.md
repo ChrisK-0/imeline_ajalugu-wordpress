@@ -26,5 +26,7 @@ Started accordion creation loop (unfinished). Idea is to create an accordion for
 Meta fields in wordpress
 ![Meta fields in wordpress](https://i.imgur.com/ZFCLR9m.png)
 
-Front page meta fields showcase
-![Front page meta fields showcase](https://gfycat.com/AncientNiceFalcon)
+Front page meta fields showcase  
+https://user-images.githubusercontent.com/73487474/118296504-b90bc980-b4e5-11eb-9b17-636565e3541b.mp4
+
+
