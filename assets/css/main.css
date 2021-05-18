@@ -13,7 +13,7 @@ body {
 
 @media only screen and (max-width: 48rem) {
   .mobile-container {
-    padding: 0px 1.563rem;
+    padding: 0 1.563rem;
     width: 100%;
     float: none;
     display: flex;
@@ -37,7 +37,7 @@ body {
 }
 @media only screen and (max-width: 48rem) {
   .contents {
-    padding: 0px 1.563rem;
+    padding: 0 1.563rem;
     width: 100%;
     float: none;
     display: flex;
@@ -65,7 +65,7 @@ body {
 .cover {
   width: 100%;
   height: 100%;
-  margin-bottom: 500px;
+  margin-bottom: 31.25rem;
   margin: 0 auto;
   display: flex;
   flex-flow: column wrap;
@@ -75,7 +75,7 @@ body {
   width: 14.063rem;
   height: 4.688rem;
   margin-top: -0.625rem;
-  margin-bottom: -30px;
+  margin-bottom: -1.875rem;
   z-index: 139;
   background: #cc3e0f, #931b00;
   background: -moz-linear-gradient(90deg, #cc3e0f 0%, #931b00 100%);
@@ -101,7 +101,7 @@ body {
 }
 .cover_ribbon {
   position: relative;
-  bottom: 10px;
+  bottom: 0.625rem;
   width: 100%;
   float: left;
 }
@@ -122,12 +122,12 @@ body {
   font-size: 7.313rem;
   font-family: "Bienetresocial";
   line-height: 0.21;
-  margin-bottom: 67px;
+  margin-bottom: 4.188rem;
 }
 @media only screen and (max-width: 48rem) {
   .cover_title {
-    max-width: 360px;
-    font-size: 95px;
+    max-width: 22.5rem;
+    font-size: 5.938rem;
   }
 }
 .cover_title-transform {
@@ -167,8 +167,8 @@ body {
 .cover_anchor {
   width: 100%;
   align-content: center;
-  margin-bottom: 100px;
-  margin-top: -20px;
+  margin-bottom: 6.25rem;
+  margin-top: -1.25rem;
   cursor: pointer;
 }
 .cover_anchor p {
@@ -468,12 +468,12 @@ body {
 }
 .description_text {
   flex-grow: 3;
-  padding-bottom: 59px;
+  padding-bottom: 3.688rem;
   font-family: "PT Sans Narrow", sans-serif;
 }
 .description_text p {
   flex-grow: 3;
-  padding-bottom: 59px;
+  padding-bottom: 3.688rem;
   font-family: "PT Sans Narrow", sans-serif;
 }
 .description_text span {
