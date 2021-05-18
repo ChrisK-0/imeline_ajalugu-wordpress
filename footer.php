@@ -19,8 +19,8 @@
     <!-- Footer content -->
     <footer>
             <div class="footer_text">
-                <a id="policyOpen" class="footer_anchor">Tutvu kampaania tingimustega</a>
-                <p>Klienditeeninduse e-post: <a href="#">register@imelineajalugu.ee</a>, tel: 667 0099 (tööpäeviti 9-17)</p>
+                <a id="policyOpen" class="footer_anchor"><?php the_field('footer_anchor'); ?></a>
+                <p><?php the_field('footer_text'); ?></p>
             </div>
     </footer>
 
