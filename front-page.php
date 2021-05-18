@@ -2,20 +2,18 @@
     get_header();
 ?>
 
-
-
-
-
 <!-- Accordion content + accordion generator -->
 <?php 
     // getting category names
     $terms = get_terms( array(
-        'taxonomy'   => 'categories', // Swap in your custom taxonomy name
+        'taxonomy'   => 'categories',
         'hide_empty' => true, 
     ));
 
+    $published_events = count($terms);
+
     // give accordion a number for uniqueness
-    $eventAccordionNumber = 0;
+    $event_accordion_number = 0;
 
     // accordion per page limiter
     $current_accordion_number = 0;
@@ -39,13 +37,9 @@ foreach( $terms as $term ) {
             )
         );
 
-
-
-
-    
     if( $custom_events_posts->have_posts() ) {
         // give panels numbers for uniqueness
-        $eventPanelNumber = 0;
+        $event_panel_number = 0;
 
         echo '
             <button class="accordion">
@@ -80,8 +74,8 @@ foreach( $terms as $term ) {
             }
 
             echo '  
-                <label class="panel_content" for="accordion-'.$eventAccordionNumber.'_panel-'.$eventPanelNumber.'">
-                <input type="checkbox" class="panel_input" id="accordion-'.$eventAccordionNumber.'_panel-'.$eventPanelNumber.'">
+                <label class="panel_content" for="accordion-'.$event_accordion_number.'_panel-'.$event_panel_number.'">
+                <input type="checkbox" class="panel_input" id="accordion-'.$event_accordion_number.'_panel-'.$event_panel_number.'">
                 <span class="checkmark-custom"></span>
                 
                 '.$custom_event_image.'
@@ -96,12 +90,12 @@ foreach( $terms as $term ) {
                 </div>
                 </label>
                 '; // end echo
-            $eventPanelNumber++;
+            $event_panel_number++;
 
         endwhile; 
-        $eventAccordionNumber++;
+        $event_accordion_number++;
         
-        if ( $eventAccordionNumber != $accordions_per_page ) {
+        if ( $event_accordion_number != $published_events && $event_accordion_number != $accordions_per_page ) {
             echo '
                 <div class="panel_next">
                     <button class="next_theme">Järgmine teema</button>
@@ -126,10 +120,11 @@ foreach( $terms as $term ) {
 
 
 ?>
-    <!-- Valmis! button div-->
-    <div class="btn-wrapper">
-        <input type="button" id="doneButton" value="Valmis!" class="btn btn-disabled" disabled>
-    </div>
+
+<!-- Valmis! button div-->
+<div class="btn-wrapper">
+    <input type="button" id="doneButton" value="Valmis!" class="btn btn-disabled" disabled>
+</div>
 
 <?php 
     get_footer();
