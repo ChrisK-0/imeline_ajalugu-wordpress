@@ -130,8 +130,7 @@
 
     &_img {
         
-        margin-left: 5rem;
-        margin-right: 1.563rem;
+        margin-left: 1.563rem;
         width: 5.25rem;
         height: 5.25rem;
     }
@@ -173,31 +172,32 @@
     input {
         position: absolute;
         opacity: 0;
-        height: 0;
-        width: 0;
+        height: 1.563rem;
+        width: 1.563rem;
         cursor: pointer;
 
         /* show the checkmark when checked */
-        &:checked~.checkmark:after {
+        &:checked~.checkmark-custom:after {
             display: block;
         }
     }
 
     /* on checkmark hover, make background gray */
-    &:hover input~.checkmark {
+    &:hover input~.checkmark-custom {
         background-color: $color-gray;
     }
 
     /* when checked, give it yellow background */
-    input:checked~.checkmark {
+    input:checked~.checkmark-custom {
         background-color: $color-checkmark-checked;
         border: 1px solid $color-checkmark-checked-border;
     }
 
+
     /* custom checkmark */
-    .checkmark {
+    .checkmark-custom {
         margin: 0 1.25rem;
-        position: absolute;
+        position: relative;
         top: 40%;
         left: 0%;
         height: 1.563rem;

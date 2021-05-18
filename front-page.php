@@ -80,16 +80,16 @@ foreach( $terms as $term ) {
                                             '; // end echo
             } else {
                 $custom_event_image = '
-                                            <div class="panel_img">
-                                                
-                                            </div>
+
                                             '; // end echo
             }
 
             echo '  
                 <label class="panel_content" for="accordion-'.$eventAccordionNumber.'_panel-'.$eventPanelNumber.'">
                 <input type="checkbox" class="panel_input" id="accordion-'.$eventAccordionNumber.'_panel-'.$eventPanelNumber.'">
-                <span class="checkmark"></span>
+
+                    <span class="checkmark-custom"></span>
+
                 
                 '.$custom_event_image.'
 

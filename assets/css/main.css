@@ -277,8 +277,7 @@ body {
   font-family: "PT Sans", sans-serif;
 }
 .panel_img {
-  margin-left: 5rem;
-  margin-right: 1.563rem;
+  margin-left: 1.563rem;
   width: 5.25rem;
   height: 5.25rem;
 }
@@ -331,24 +330,24 @@ body {
 .panel_content input {
   position: absolute;
   opacity: 0;
-  height: 0;
-  width: 0;
+  height: 1.563rem;
+  width: 1.563rem;
   cursor: pointer;
   /* show the checkmark when checked */
 }
-.panel_content input:checked ~ .checkmark:after {
+.panel_content input:checked ~ .checkmark-custom:after {
   display: block;
 }
-.panel_content:hover input ~ .checkmark {
+.panel_content:hover input ~ .checkmark-custom {
   background-color: #ccc;
 }
-.panel_content input:checked ~ .checkmark {
+.panel_content input:checked ~ .checkmark-custom {
   background-color: #fff6bf;
   border: 1px solid #f0ce00;
 }
-.panel_content .checkmark {
+.panel_content .checkmark-custom {
   margin: 0 1.25rem;
-  position: absolute;
+  position: relative;
   top: 40%;
   left: 0%;
   height: 1.563rem;
@@ -358,7 +357,7 @@ body {
   background-color: #efefef;
   /* checkmark indicator style */
 }
-.panel_content .checkmark:after {
+.panel_content .checkmark-custom:after {
   left: 0.5rem;
   top: 0.25rem;
   width: 0.313rem;
