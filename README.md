@@ -36,3 +36,10 @@ https://user-images.githubusercontent.com/73487474/118296504-b90bc980-b4e5-11eb-
 Added a custom meta field for images in custom post type Events. Images can be added in the meta field, where you write a title and a paragraph for the according event.
 Next_theme button is now given to all accordions, except the last (like it should be).
 Accordion per page can now be set in Wordpress environment under the front page. Only published posts are counted, but currently there is no way to specify, which event blocks to display.
+
+## Day 27
+
+### Fixed CSS and next_theme button generation bugs
+
+Fixed text for labels inside accordion to not have an empty space when no image is present for the event. Also made it retain its length towards the right side of the label.
+Next_theme button is now generated properly. Before it created it for the last theme, when accordions per page was set to a higher number than the amount of currently published and displayable posts.
