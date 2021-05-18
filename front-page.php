@@ -14,13 +14,8 @@
         'hide_empty' => true, 
     ));
 
-    // total amount of taxonomies in array
-    $total_of_event_categories = count($terms);
-
     // give accordion a number for uniqueness
     $eventAccordionNumber = 0;
-
-
 
     // accordion per page limiter
     $current_accordion_number = 0;
@@ -87,9 +82,7 @@ foreach( $terms as $term ) {
             echo '  
                 <label class="panel_content" for="accordion-'.$eventAccordionNumber.'_panel-'.$eventPanelNumber.'">
                 <input type="checkbox" class="panel_input" id="accordion-'.$eventAccordionNumber.'_panel-'.$eventPanelNumber.'">
-
-                    <span class="checkmark-custom"></span>
-
+                <span class="checkmark-custom"></span>
                 
                 '.$custom_event_image.'
 
@@ -108,7 +101,7 @@ foreach( $terms as $term ) {
         endwhile; 
         $eventAccordionNumber++;
         
-        if ( $eventAccordionNumber != $total_of_event_categories ) {
+        if ( $eventAccordionNumber != $accordions_per_page ) {
             echo '
                 <div class="panel_next">
                     <button class="next_theme">Järgmine teema</button>
@@ -126,7 +119,7 @@ foreach( $terms as $term ) {
     // increment current accordion number by 1 for each category loop
     $current_accordion_number++;
     // if current accordion number is equal to manually set accordions per page, then break the foreach category loop
-    if ($current_accordion_number == $accordions_per_page) {
+    if ($current_accordion_number == ($accordions_per_page) ) {
         break;
     }
 } // END TERMS FOREACH
