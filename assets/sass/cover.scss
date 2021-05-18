@@ -6,6 +6,10 @@
     width: auto;
     padding-bottom: 3.75rem;
     width: 100%;
+
+    @include mobile {
+        margin-top: -2rem;
+    }
 }
 
 .cover {
@@ -28,6 +32,10 @@
         background: -moz-linear-gradient(90deg, $color-ribbon-light 0%, $color-ribbon-dark 100%);
         background: -webkit-linear-gradient(90deg, $color-ribbon-light 0%, $color-ribbon-dark 100%);
         background-image: -ms-linear-gradient(90deg, $color-ribbon-light 0%, $color-ribbon-dark 100%);
+
+        @include mobile {
+            margin-top: 1rem;
+        }
 
         p {
             font-family: $font-family-primary;
@@ -74,6 +82,11 @@
         line-height: 0.21;
         margin-bottom: 67px;
 
+        @include mobile {
+            max-width: 360px;
+            font-size: 95px;
+        }
+
         &-transform {
             font-size: 1.033rem;
             position: absolute;
@@ -89,6 +102,12 @@
             -moz-transform: rotate(-65deg);
             -ms-transform: rotate(-65deg);
             -o-transform: rotate(-65deg);
+
+            @include mobile {
+                font-size: 0.9rem;
+                left: -0.5rem;
+                top: 2.1rem;
+            }
         }
     }
     
@@ -123,6 +142,10 @@
             text-shadow: 0.044rem 0.044rem 0.063rem rgba(255, 255, 255, 0.004);
     
             @include boldFont;
+
+            @include mobile {
+                line-height: 1;
+            }
         }
 
         &-arrow {
