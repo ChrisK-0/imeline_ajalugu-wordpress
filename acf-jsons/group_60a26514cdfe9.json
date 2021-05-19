@@ -1,0 +1,45 @@
+{
+    "key": "group_60a26514cdfe9",
+    "title": "Accordions per page",
+    "fields": [
+        {
+            "key": "field_60a2658d71186",
+            "label": "Accordions per page",
+            "name": "accordions_per_page",
+            "type": "number",
+            "instructions": "set a number (number \"0\" or a number higher than the amount of categories to show all) without additional characters, for example: 4",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "placeholder": 3,
+            "prepend": "",
+            "append": "",
+            "min": 0,
+            "max": "",
+            "step": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 9,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "set a number without additional characters, for example: 3",
+    "modified": 1621429860
+}
