@@ -43,3 +43,9 @@ Accordion per page can now be set in Wordpress environment under the front page.
 
 Fixed text for labels inside accordion to not have an empty space when no image is present for the event. Also made it retain its length towards the right side of the label.
 Next_theme button is now generated properly. Before it created it for the last theme, when accordions per page was set to a higher number than the amount of currently published and displayable posts.
+
+## Day 28
+
+### Changed PHP/CSS, added ACF plugin to theme and added git ignore
+
+Added category listing to editor, fixed accordion heading CSS, git ignore for node_module, PHP structure adjustments, custom meta fields now save locally and advanced custom meta fields is added to the theme.
