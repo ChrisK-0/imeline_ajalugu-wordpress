@@ -64,8 +64,8 @@ function custom_events_list() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
-		'show_in_rest' 			=> true,
-		'menu_icon'           => 'dashicons-editor-ul'
+		'menu_icon'           => 'dashicons-editor-ul',
+		'show_in_rest'		  => true
 	);
 	register_post_type( "custom_event", $args );
 }
@@ -91,13 +91,14 @@ function create_categories_hierarchical_taxonomy() {
   );    
 // register the taxonomy
   register_taxonomy('categories',array('custom_event'), array(
-    'hierarchical' => true,
-    'labels' => $labels,
-    'show_ui' => true,
-    'show_in_rest' => true,
+    'hierarchical' 		=> true,
+    'labels' 			=> $labels,
+    'show_ui' 			=> true,
     'show_admin_column' => true,
-    'query_var' => true,
-    'rewrite' => array( 'slug' => 'category' ),
+	'show_in_rest' 		=> true,
+    'query_var' 		=> true,
+    'rewrite' 			=> array( 'slug' => 'category' ),
+	'show_in_rest' 		=> true
   ));
 
 }

@@ -57,21 +57,3 @@
             </div>
     </div>
 </div>
-
-<!-- Site content -->
-<div class="contents">
-
-    <!-- Accordion heading -->
-    <div class="intro" id="accordionTitle">
-        <h2 class="intro_title">
-            <?php
-                the_field('intro_title');
-            ?>     
-        </h2>
-        <p class="intro_text">
-            <?php
-                the_field('intro_text');
-            ?>                
-        </p>
-    </div>
-
