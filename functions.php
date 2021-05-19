@@ -48,9 +48,9 @@ function custom_events_list() {
 		'label'               => __( 'events', 'Imeline_ajalugu' ),
 		'description'         => __( 'Events', 'Imeline_ajalugu' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+		
 		// You can associate this CPT with a taxonomy or custom taxonomy. 
-		'taxonomies'          => array( 'accordion' ),
+		'taxonomies'          => array( 'categories' ),
 		/* A hierarchical CPT is like Pages and can have Parent and child items. A non-hierarchical CPT is like Posts. */ 
 		'hierarchical'        => false,
 		'public'              => true,
@@ -65,7 +65,11 @@ function custom_events_list() {
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
 		'menu_icon'           => 'dashicons-editor-ul',
-		'show_in_rest'		  => true
+		'rewrite' 			=> array( 'slug' => 'custom_event' ),
+		'rest_base'          => 'custom_events',
+		'rest_controller_class' => 'WP_REST_Posts_Controller',
+		'show_in_rest'		  => true,
+		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', )
 	);
 	register_post_type( "custom_event", $args );
 }
@@ -73,8 +77,6 @@ add_action( 'init', 'custom_events_list' );
 
 
 // custom taxonomy 
-//hook into the init action and call create_book_taxonomies when it fires
- 
 function create_categories_hierarchical_taxonomy() { 
   $labels = array(
     'name' => _x( 'categories', 'taxonomy general name' ),
@@ -89,21 +91,23 @@ function create_categories_hierarchical_taxonomy() {
     'new_item_name' => __( 'New category Name' ),
     'menu_name' => __( 'Categories' ),
   );    
-// register the taxonomy
+
   register_taxonomy('categories',array('custom_event'), array(
-    'hierarchical' 		=> true,
-    'labels' 			=> $labels,
-    'show_ui' 			=> true,
-    'show_admin_column' => true,
-	'show_in_rest' 		=> true,
-    'query_var' 		=> true,
-    'rewrite' 			=> array( 'slug' => 'category' ),
-	'show_in_rest' 		=> true
+    'hierarchical' 			=> true,
+    'labels' 				=> $labels,
+    'show_ui' 				=> true,
+    'show_admin_column' 	=> true,
+	'show_in_rest' 			=> true,
+    'query_var' 			=> true,
+    'rewrite' 				=> array( 'slug' => 'category' ),
+	'show_in_rest' 			=> true,
+	'rest_base'             => 'category',
+    'rest_controller_class' => 'WP_REST_Terms_Controller',
   ));
 
 }
 
-add_action( 'init', 'create_categories_hierarchical_taxonomy', 0 );
+add_action( 'init', 'create_categories_hierarchical_taxonomy', 15 );
 
 
 
