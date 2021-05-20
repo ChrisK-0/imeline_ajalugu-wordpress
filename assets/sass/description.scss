@@ -26,10 +26,10 @@
         }
 
         span {
+            @include boldFont;
+
             color: $color-description-red;
             text-decoration: underline;
-            
-            @include boldFont;
         }
     }
 

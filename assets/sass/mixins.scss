@@ -18,7 +18,6 @@
     text-shadow: -0.044rem -0.044rem 0 rgba($color-black, 0.2);
     border: 1px solid $color-button-red-border;
     border-radius: 6px;
-
     background: $color-button-red-light;
     background: -moz-linear-gradient(90deg, rgba($color-button-red-light, 1) 0%, rgba($color-button-red-dark, 1) 100%);
     background: -webkit-linear-gradient(90deg, rgba($color-button-red-light, 1) 0%, rgba($color-button-red-dark, 1) 100%);
@@ -36,7 +35,6 @@
     @media only screen and (max-width:48rem) {
         @content;
     }
-    
 }
 
 @mixin boldFont {

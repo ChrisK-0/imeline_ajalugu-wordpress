@@ -8,10 +8,11 @@ body {
 
 .mobile-container {
     @include mobile {
+        @include displayFlexColumn;
+
         padding: 0 1.563rem;
         width: 100%;
         float: none;
-        @include displayFlexColumn;
         justify-content: center;
         align-items: center;
     }
@@ -24,15 +25,17 @@ body {
 }
 
 .contents {
+    @include displayFlexColumn;
+
     justify-content: center;
     margin: 0 auto;
 
-    @include displayFlexColumn;
     @include mobile {
+        @include displayFlexColumn;
+
         padding: 0 1.563rem;
         width: 100%;
         float: none;
-        @include displayFlexColumn;
         justify-content: center;
         align-items: center;
     };

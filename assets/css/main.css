@@ -13,11 +13,11 @@ body {
 
 @media only screen and (max-width: 48rem) {
   .mobile-container {
+    display: flex;
+    flex-flow: column wrap;
     padding: 0 1.563rem;
     width: 100%;
     float: none;
-    display: flex;
-    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
   }
@@ -30,18 +30,18 @@ body {
 }
 
 .contents {
-  justify-content: center;
-  margin: 0 auto;
   display: flex;
   flex-flow: column wrap;
+  justify-content: center;
+  margin: 0 auto;
 }
 @media only screen and (max-width: 48rem) {
   .contents {
+    display: flex;
+    flex-flow: column wrap;
     padding: 0 1.563rem;
     width: 100%;
     float: none;
-    display: flex;
-    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
   }
@@ -63,12 +63,12 @@ body {
 }
 
 .cover {
+  display: flex;
+  flex-flow: column wrap;
   width: 100%;
   height: 100%;
   margin-bottom: 31.25rem;
   margin: 0 auto;
-  display: flex;
-  flex-flow: column wrap;
 }
 .cover_note {
   text-align: center;
@@ -88,12 +88,12 @@ body {
   }
 }
 .cover_note p {
+  font-weight: bold;
   font-family: "PT Sans Narrow", sans-serif;
   font-size: 2.66rem;
   text-shadow: -0.044rem -0.044rem 0px rgba(0, 0, 0, 0.2);
   line-height: 0;
   color: #fff;
-  font-weight: bold;
   transform: matrix(1.1746140804, 0, 0, 1.1746140804, 0, 0);
   -moz-transform: matrix(1.1746140804, 0, 0, 1.1746140804, 0, 0);
   -webkit-transform: matrix(1.1746140804, 0, 0, 1.1746140804, 0, 0);
@@ -172,13 +172,13 @@ body {
   cursor: pointer;
 }
 .cover_anchor p {
+  font-weight: bold;
   float: left;
   font-size: 1.875rem;
   font-family: "PT Sans Narrow", sans-serif;
   color: #a62300;
   line-height: 0.7;
   text-shadow: 0.044rem 0.044rem 0.063rem rgba(255, 255, 255, 0.004);
-  font-weight: bold;
 }
 @media only screen and (max-width: 48rem) {
   .cover_anchor p {
@@ -194,6 +194,8 @@ body {
 
 /* Accordion clickable panel style */
 .accordion {
+  display: flex;
+  flex-flow: row nowrap;
   width: 100%;
   height: 100%;
   background-color: #fff;
@@ -206,8 +208,6 @@ body {
   border-bottom: 1px solid #ffe756;
   padding: 0;
   justify-content: space-between;
-  display: flex;
-  flex-flow: row nowrap;
   /* Opened accordion span header will have yellow-ish background */
 }
 .accordion_show {
@@ -218,17 +218,17 @@ body {
   background-color: #ccc;
 }
 .accordion_header {
+  font-weight: bold;
   font-family: "Bienetresocial";
   font-size: 1.25rem;
   color: #3f2916;
-  padding: 0.625rem;
+  padding: 1.25rem 1.188rem;
   display: flex;
-  font-weight: bold;
   /* to counter the 1px from the active class */
   border: 1px none;
 }
 .accordion_header-active {
-  border: 1px solid #ffeb6b;
+  border: 0px solid #ffeb6b;
   border-radius: 10px 10px 0 0;
   display: block !important;
   /* special coloring */
@@ -241,11 +241,11 @@ body {
 }
 
 .intro_title {
+  font-weight: bold;
   font-family: "Bienetresocial";
   font-size: 1.875rem;
   color: #3f2916;
   line-height: 0.7;
-  font-weight: bold;
 }
 .intro_text {
   font-family: "PT Sans Narrow", sans-serif;
@@ -259,7 +259,7 @@ body {
   font-family: "PT Sans Narrow", sans-serif;
   font-size: 1.5rem;
   line-height: 0.875;
-  padding: 0.625rem;
+  padding: 1.25rem 1.125rem;
 }
 .accordion_counter span {
   padding: 0;
@@ -294,10 +294,10 @@ body {
   }
 }
 .panel_title {
+  font-weight: bold;
   flex-basis: auto;
   flex-grow: 1;
   margin-bottom: -0.625rem;
-  font-weight: bold;
 }
 .panel_description {
   line-height: 1.5;
@@ -320,9 +320,6 @@ body {
 }
 
 .next_theme {
-  margin-top: 1.25rem;
-  width: 13.75rem;
-  padding: 1.25rem 0.625rem;
   color: #fff;
   margin-bottom: 1.25rem;
   font-weight: bold;
@@ -337,6 +334,9 @@ body {
   background: -webkit-linear-gradient(90deg, #b72a00 0%, #951c00 100%);
   background: -ms-linear-gradient(90deg, #b72a00 0%, #951c00 100%);
   box-shadow: inset 0 0.063rem 0.063rem 0 rgba(197, 82, 48, 0.75);
+  margin-top: 1.25rem;
+  width: 13.75rem;
+  padding: 1.25rem 0.625rem;
 }
 
 .panel_content:not(:last-of-type) {
@@ -344,6 +344,8 @@ body {
 }
 
 .panel_content {
+  display: flex;
+  flex-flow: row nowrap;
   padding: 0.625rem 0 0.625rem 0;
   position: relative;
   align-items: center;
@@ -352,8 +354,6 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: flex;
-  flex-flow: row nowrap;
   /* hides browser's default checkbox */
   /* on checkmark hover, make background gray */
   /* when checked, give it yellow background */
@@ -434,12 +434,12 @@ body {
   height: 4rem;
 }
 .btn-wrapper .btn-disabled {
+  font-weight: bold;
   color: #e2e2e2;
   border: 1px solid #999;
   border-radius: 6px;
   background: #b1b1b1;
   box-shadow: inset 0 0.063rem 0.063rem 0 rgba(192, 192, 192, 0.75);
-  font-weight: bold;
 }
 
 .panel_content_input[disabled] {
@@ -476,9 +476,9 @@ body {
   font-family: "PT Sans Narrow", sans-serif;
 }
 .description_text span {
+  font-weight: bold;
   color: #951c00;
   text-decoration: underline;
-  font-weight: bold;
 }
 .description_img {
   display: flex;
@@ -507,6 +507,8 @@ body {
 }
 
 footer {
+  display: flex;
+  flex-flow: column wrap;
   z-index: 3;
   background-color: #3b3530;
   width: 100%;
@@ -514,16 +516,14 @@ footer {
   align-items: center;
   align-content: center;
   padding: 0.625rem;
-  display: flex;
-  flex-flow: column wrap;
 }
 @media only screen and (max-width: 48rem) {
   footer {
+    display: flex;
+    flex-flow: column wrap;
     padding: 0 1.563rem;
     width: 100%;
     float: none;
-    display: flex;
-    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
   }
@@ -531,7 +531,7 @@ footer {
 
 .footer_text {
   width: 100%;
-  padding: 1.563rem 0;
+  padding: 2.5rem 0;
   font-family: "PT Sans Narrow", sans-serif;
 }
 .footer_text a {
@@ -573,12 +573,12 @@ footer {
   }
 }
 .modal_btn {
+  font-weight: bold;
   color: #aaa;
   float: right;
   font-size: 1.75rem;
   background-color: rgba(0, 0, 0, 0);
   border: none;
-  font-weight: bold;
 }
 .modal_btn:hover, .modal_btn:focus {
   color: #000;

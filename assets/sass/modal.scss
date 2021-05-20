@@ -27,13 +27,13 @@
 
     /* The Close button */
     &_btn {
+        @include boldFont;
+
         color: $color-modal-btn;
         float: right;
         font-size: 1.75rem;
         background-color: rgba($color-black, 0);
         border: none;
-    
-        @include boldFont;
     }
 
     &_btn:hover, &_btn:focus {

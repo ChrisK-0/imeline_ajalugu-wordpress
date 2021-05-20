@@ -6,15 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- MAIN CSS -->
-    <!-- 
-        <link rel="stylesheet" href="main.css">
-    -->
     <?php
-    wp_head();
+        wp_head();
     ?>
-
-
 
 </head>
 <body>
@@ -26,6 +20,7 @@
     
             <div class="cover_note">
                 <p>Tee ise</p>
+
                 <div class="cover_ribbon">
                     <div class="cover_ribbon-down"></div>
                 </div>
@@ -41,17 +36,15 @@
                         the_field('cover_paragraph');
                     ?>
                 </p>
-
             </div>
 
             <div class="cover_anchor">
                 <a id="gotoAccordionAnchor">
-                    <p><img class="cover_anchor-arrow" src="<?php echo get_template_directory_uri();?>/assets/imgs/goto_arrow_down.png">
+                    <p><img class="cover_anchor-arrow" src="<?= get_template_directory_uri(); ?>/assets/imgs/goto_arrow_down.png">
 
                         <?php
                             the_field('cover_anchor');
                         ?>
-
                     </p>
                 </a>
             </div>

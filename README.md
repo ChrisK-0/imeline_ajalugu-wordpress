@@ -49,3 +49,9 @@ Next_theme button is now generated properly. Before it created it for the last t
 ### Changed PHP/CSS, added ACF plugin to theme and added git ignore
 
 Added category listing to editor, fixed accordion heading CSS, git ignore for node_module, PHP structure adjustments, custom meta fields now save locally and advanced custom meta fields is added to the theme.
+
+## Day 29
+
+### Fixed broken spots in CSS and re-wrote code structure
+
+Added some broken CSS spots that had gone out of place in progress. Started thinking about a function to let the user select which posts to show. For example, when there are 6 total categories published and accordions per page is set to 3, then the user can choose which 3 of the 6 are shown.
