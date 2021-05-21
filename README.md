@@ -61,3 +61,4 @@ Added some broken CSS spots that had gone out of place in progress. Started thin
 ### Tried to make Event categories sortable with a new column
 
 Added a column to the custom taxonomy Categories. The button is not yet clickable and sorts in a weird way.
+Edit: The button is now clickable and sorts in a weird way. Still need to apply it to the accordion generator.
