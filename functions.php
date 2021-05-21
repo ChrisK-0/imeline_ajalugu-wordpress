@@ -115,8 +115,8 @@ add_action( 'init', 'create_categories_hierarchical_taxonomy', 'manage_edit-cust
 
 add_filter( 'manage_edit-categories_columns', 'create_categories_pattern_column', 11, 1  );
 add_action( 'manage_categories_custom_column', 'categories_pattern_column_metafield', 12, 3 );
-add_action( 'pre_get_posts', 'pattern_sort_by_order', 1 );
-add_filter( 'manage_edit-pattern_sortable_columns', 'categories_pattern_sortable_columns', 14, 1 );
+add_action( 'pre_get_posts', 'categories_sort_by_order', 1 );
+add_filter( 'manage_edit-categories_sortable_columns', 'categories_sortable_columns' );
 
 // create the column
 function create_categories_pattern_column( $columns ) {
@@ -137,13 +137,13 @@ function categories_pattern_column_metafield( $value, $column, $term_id ) {
 }
 
 // make order column sortable
-function categories_pattern_sortable_columns($columns) {
+function categories_sortable_columns($columns) {
 	$columns['pattern'] = 'pattern';
 	return $columns;
 }
 
 // sorting function
-function pattern_sort_by_order( $query ) {
+function categories_sort_by_order( $query ) {
 	if( ! is_admin() )
 			return;
 
