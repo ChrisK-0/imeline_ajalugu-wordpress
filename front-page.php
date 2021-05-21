@@ -75,8 +75,8 @@ foreach( $terms as $term ) {
             // separate labels for each checkbox inside the div with class "panel"
 
             // filter get_the_content, so it doesnt add extra <p> tags
-            $to_strip = get_the_content();
-            $stripped_content = strip_tags($to_strip);
+            $content_to_strip = get_the_content();
+            $stripped_content = wp_strip_all_tags($content_to_strip);
 
             echo '  
         <label class="panel_content" for="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">

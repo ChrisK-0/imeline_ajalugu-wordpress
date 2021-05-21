@@ -26,7 +26,6 @@ add_action( 'wp_enqueue_scripts', 'imeline_ajalugu_assets');
 
 
 // custom taxonomy and post type
-
 // custom post type
 function custom_events_list() {
 	$labels = array(
@@ -71,19 +70,18 @@ function custom_events_list() {
 		'rest_base'          => 'custom_events',
 		'rest_controller_class' => 'WP_REST_Posts_Controller',
 		'show_in_rest'		  => true,
-		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', )
+		'supports'            => array( 'title', 'editor', 'thumbnail', 'page-attributes', 'custom-fields', )
 	);
 	register_post_type( "custom_event", $args );
 }
-
 add_action( 'init', 'custom_events_list' );
 
 
 // custom taxonomy 
 function create_categories_hierarchical_taxonomy() { 
   $labels = array(
-    'name' => _x( 'categories', 'taxonomy general name' ),
-    'singular_name' => _x( 'category', 'taxonomy singular name' ),
+    'name' => _x( 'Event categories', 'taxonomy general name' ),
+    'singular_name' => _x( 'Event category', 'taxonomy singular name' ),
     'search_items' =>  __( 'Search categories' ),
     'all_items' => __( 'All categories' ),
     'parent_item' => __( 'Parent category' ),
@@ -102,14 +100,61 @@ function create_categories_hierarchical_taxonomy() {
     'show_admin_column' 	=> true,
 	'show_in_rest' 			=> true,
     'query_var' 			=> true,
-    'rewrite' 				=> array( 'slug' => 'category' ),
+    'rewrite' 				=> array( 'slug' => 'custom_category' ),
 	'show_in_rest' 			=> true,
 	'rest_base'             => 'category',
     'rest_controller_class' => 'WP_REST_Terms_Controller',
   ));
 }
+add_action( 'init', 'create_categories_hierarchical_taxonomy', 'manage_edit-custom_category', 15 );
 
-add_action( 'init', 'create_categories_hierarchical_taxonomy', 15 );
+
+
+
+// custom taxonomy pattern column
+
+add_filter( 'manage_edit-categories_columns', 'create_categories_pattern_column', 11, 1  );
+add_action( 'manage_categories_custom_column', 'categories_pattern_column_metafield', 12, 3 );
+add_action( 'pre_get_posts', 'pattern_sort_by_order', 1 );
+add_filter( 'manage_edit-pattern_sortable_columns', 'categories_pattern_sortable_columns', 14, 1 );
+
+// create the column
+function create_categories_pattern_column( $columns ) {
+    $columns['pattern'] = __( 'Pattern' );
+    return $columns;
+}
+
+// get pattern metafield from custom meta fields
+function categories_pattern_column_metafield( $value, $column, $term_id ) {
+	$get_custom_category = get_term($term_id /*, 'custom_category'*/);
+	$get_order_meta = get_field('category_order', $get_custom_category);
+	switch($column) {
+	  case 'pattern': 
+		$value = $get_order_meta;
+	  break;
+	}
+	return $value;  
+}
+
+// make order column sortable
+function categories_pattern_sortable_columns($columns) {
+	$columns['pattern'] = 'pattern';
+	return $columns;
+}
+
+// sorting function
+function pattern_sort_by_order( $query ) {
+	if( ! is_admin() )
+			return;
+
+	$orderby = $query->get( 'orderby' );
+
+	if ( 'pattern' == $orderby ) {
+		$query->set('meta_key', 'pattern');
+		$query->set('orderby', 'meta_value_num');
+	}
+}
+
 
 
 // Advanced Custom Fields

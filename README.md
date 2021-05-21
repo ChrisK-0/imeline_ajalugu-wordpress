@@ -55,3 +55,9 @@ Added category listing to editor, fixed accordion heading CSS, git ignore for no
 ### Fixed broken spots in CSS and re-wrote code structure
 
 Added some broken CSS spots that had gone out of place in progress. Started thinking about a function to let the user select which posts to show. For example, when there are 6 total categories published and accordions per page is set to 3, then the user can choose which 3 of the 6 are shown.
+
+## Day 30
+
+### Tried to make Event categories sortable with a new column
+
+Added a column to the custom taxonomy Categories. The button is not yet clickable and sorts in a weird way.
