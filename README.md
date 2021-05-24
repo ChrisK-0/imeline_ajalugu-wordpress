@@ -62,3 +62,9 @@ Added some broken CSS spots that had gone out of place in progress. Started thin
 
 Added a column to the custom taxonomy Categories. The button is not yet clickable and sorts in a weird way.
 Edit: The button is now clickable and sorts in a weird way. Still need to apply it to the accordion generator.
+
+## Day 31
+
+### Made an archive page for all accordions
+
+Put a pause for the Event category sorting until a solution is made. Made accordion archive page. Unfinished link for accordion archive page (CSS wise).
