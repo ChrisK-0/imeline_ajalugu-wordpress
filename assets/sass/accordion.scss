@@ -253,6 +253,17 @@
     }
 }
 
+.view_acordions {
+    align-content: flex-end;
+    align-items: center;
+
+    &-all {
+        align-self: flex-end;
+        color: $color-anchor-red;
+        text-decoration: none;
+    }
+}
+
 
 .panel_content_input[disabled] {
     cursor: not-allowed;

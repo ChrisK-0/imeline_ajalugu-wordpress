@@ -115,7 +115,7 @@ add_action( 'init', 'create_categories_hierarchical_taxonomy', 'manage_edit-cust
 
 add_filter( 'manage_edit-categories_columns', 'create_categories_pattern_column', 11, 1  );
 add_action( 'manage_categories_custom_column', 'categories_pattern_column_metafield', 12, 3 );
-add_action( 'pre_get_posts', 'categories_sort_by_order', 1 );
+add_action( 'pre_get_posts', 'categories_posts_orderby', 1 );
 add_filter( 'manage_edit-categories_sortable_columns', 'categories_sortable_columns' );
 
 // create the column
@@ -143,16 +143,16 @@ function categories_sortable_columns($columns) {
 }
 
 // sorting function
-function categories_sort_by_order( $query ) {
-	if( ! is_admin() )
-			return;
-
-	$orderby = $query->get( 'orderby' );
-
-	if ( 'pattern' == $orderby ) {
-		$query->set('meta_key', 'pattern');
-		$query->set('orderby', 'meta_value_num');
-	}
+function categories_posts_orderby( $query ) {
+	if( ! is_admin() || ! $query->is_main_query() ) {
+		return;
+	  }
+	
+	  if ( 'pattern' === $query->get( 'orderby') ) {
+		$query->set( 'orderby', 'meta_value' );
+		$query->set( 'meta_key', 'pattern' );
+		$query->set( 'meta_type', 'numeric' );
+	  }
 }
 
 

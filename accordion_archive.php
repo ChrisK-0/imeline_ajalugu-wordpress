@@ -1,4 +1,24 @@
 <?php
+/**
+ * The template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package imeline-ajalugu
+ */
+
+ /*
+Template Name: Acordion archive
+*/
+?>
+
+
+<?php
     get_header();
 ?>
 
@@ -31,9 +51,9 @@
     // give accordion a number for uniqueness
     $accordion_number = 0;
 
-    // accordion per page limiter
-    $accordions_per_page = get_field('accordions_per_page');
-
+	// accordion per page limiter
+	$accordions_per_page = get_field('accordions_per_page');
+    
     $current_accordion_number = 0;
     $published_categories = count($terms);
 
@@ -107,7 +127,7 @@ foreach( $terms as $term ) {
         endwhile; 
         $accordion_number++;
         
-        if ( $accordion_number != $published_categories && $accordion_number != $accordions_per_page ) {
+        if ( $accordion_number != $published_categories && $accordion_number ) {
             echo '
         <div class="panel_next">
             <button class="next_theme">Järgmine teema</button>
@@ -123,16 +143,10 @@ foreach( $terms as $term ) {
 
     // increment current accordion number by 1 for each category loop
     $current_accordion_number++;
-    // if current accordion number is equal to manually set accordions per page, then break the foreach category loop
-    if ($current_accordion_number == ($accordions_per_page) ) {
-        break;
-    }
 } // END TERMS FOREACH
 
 ?>
-    <div class="view_acordions">
-        <a class="view_acordions-all" href="<?php echo get_page_link( 181 ); ?>">Vaata kõiki</a>
-    </div>
+
 <!-- Valmis! button div-->
     <div class="btn-wrapper">
         <input type="button" id="doneButton" value="Valmis!" class="btn btn-disabled" disabled>
