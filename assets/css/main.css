@@ -443,13 +443,21 @@ body {
 }
 
 .view_acordions {
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
   align-content: flex-end;
   align-items: center;
 }
 .view_acordions-all {
-  align-self: flex-end;
+  font-family: "PT Sans Narrow", sans-serif;
+  border-radius: 35%;
   color: #a62300;
   text-decoration: none;
+  margin: 15px;
+  padding: 6px;
+  background-color: #ffe756;
+  box-shadow: 0 0 0.5rem 0.5rem rgba(255, 231, 86, 0.65);
 }
 
 .panel_content_input[disabled] {
