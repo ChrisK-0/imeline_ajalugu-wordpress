@@ -68,3 +68,9 @@ Edit: The button is now clickable and sorts in a weird way. Still need to apply 
 ### Made an archive page for all accordions
 
 Put a pause for the Event category sorting until a solution is made. Made accordion archive page. Unfinished link for accordion archive page (CSS wise).
+
+## Day 32
+
+### Single page for accordion events
+
+Need to add CSS to the anchors inside accordions and fit single-custom_event.php with proper content.
