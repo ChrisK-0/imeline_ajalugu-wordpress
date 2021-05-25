@@ -76,7 +76,6 @@ function custom_events_list() {
 }
 add_action( 'init', 'custom_events_list' );
 
-
 // custom taxonomy 
 function create_categories_hierarchical_taxonomy() { 
   $labels = array(

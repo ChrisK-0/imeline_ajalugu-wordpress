@@ -107,6 +107,7 @@
         flex-flow: column nowrap;
         width: 100%;
 
+
         @include mobile {
             padding-right: 0;
         }
@@ -118,6 +119,8 @@
         flex-basis: auto;
         flex-grow: 1;
         margin-bottom: -0.625rem;
+        text-decoration: none;
+        
     }
 
     &_description {

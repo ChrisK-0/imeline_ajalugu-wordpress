@@ -298,6 +298,7 @@ body {
   flex-basis: auto;
   flex-grow: 1;
   margin-bottom: -0.625rem;
+  text-decoration: none;
 }
 .panel_description {
   line-height: 1.5;

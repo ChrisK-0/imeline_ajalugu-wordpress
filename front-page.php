@@ -1,4 +1,10 @@
 <?php
+/*
+Template Name: Kappa
+Template Post Type: post, page, product, custom_event
+*/
+
+
     get_header();
 ?>
 
@@ -92,9 +98,9 @@ foreach( $terms as $term ) {
                 }
                 echo '
             <div class="panel_text">
-                <p class="panel_title">
+                <a class="panel_title" href="'.get_page_uri($post).'">
                     '.get_the_title().'
-                </p>
+                </a>
 
                 <p class="panel_description">
                     '.$stripped_content.'
@@ -131,6 +137,7 @@ foreach( $terms as $term ) {
 
 ?>
     <div class="view_acordions">
+        <!-- Link to the accordion acrhive page -->
         <a class="view_acordions-all" href="<?php echo get_page_link( 181 ); ?>">Vaata kõiki</a>
     </div>
 <!-- Valmis! button div-->
