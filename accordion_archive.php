@@ -28,14 +28,14 @@ Template Name: Acordion archive
     <!-- Accordion heading -->
     <div class="intro" id="accordionTitle">
         <h2 class="intro_title">
-            <?php
-                the_field('intro_title');
+            <?=
+                get_field('intro_title');
             ?>     
         </h2>
 
         <p class="intro_text">
-            <?php
-                the_field('intro_text');
+            <?=
+                get_field('intro_text');
             ?>                
         </p>
     </div>
@@ -112,9 +112,9 @@ foreach( $terms as $term ) {
                 }
                 echo '
             <div class="panel_text">
-                <p class="panel_title">
+                <a class="panel_title" href="'.get_page_uri($post).'">
                     '.get_the_title().'
-                </p>
+                </a>
 
                 <p class="panel_description">
                     '.$stripped_content.'

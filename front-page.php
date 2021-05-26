@@ -14,14 +14,14 @@ Template Post Type: post, page, product, custom_event
     <!-- Accordion heading -->
     <div class="intro" id="accordionTitle">
         <h2 class="intro_title">
-            <?php
-                the_field('intro_title');
+            <?=
+                get_field('intro_title');
             ?>     
         </h2>
 
         <p class="intro_text">
-            <?php
-                the_field('intro_text');
+            <?=
+                get_field('intro_text');
             ?>                
         </p>
     </div>
@@ -136,9 +136,9 @@ foreach( $terms as $term ) {
 } // END TERMS FOREACH
 
 ?>
-    <div class="view_acordions">
+    <div class="view_accordions">
         <!-- Link to the accordion acrhive page -->
-        <a class="view_acordions-all" href="<?php echo get_page_link( 181 ); ?>">Vaata kõiki</a>
+        <a class="view_accordions-all" href="<?php echo get_page_link( 181 ); ?>">Vaata kõiki</a>
     </div>
 <!-- Valmis! button div-->
     <div class="btn-wrapper">

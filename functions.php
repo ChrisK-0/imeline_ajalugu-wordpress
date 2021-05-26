@@ -187,3 +187,4 @@ function my_acf_json_load_point( $paths ) {
     $paths[] = get_stylesheet_directory() . '/acf-jsons';
     return $paths;
 }
+

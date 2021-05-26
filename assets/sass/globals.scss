@@ -38,5 +38,22 @@ body {
         float: none;
         justify-content: center;
         align-items: center;
-    };
+    }
+}
+
+.event_single {
+    &-wrap {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+    }
+
+    .panel_title {
+        font-size: $font-size-big;
+    }
+
+    .panel_description {
+        font-size: $font-size-regular;
+        font-family: $font-family-primary;
+    }
 }

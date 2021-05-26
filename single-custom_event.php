@@ -1,30 +1,54 @@
-<?php
-/*
-Template Name: Single event
-Template Post Type: post, custom_event
-*/
-
-get_header(); ?>
+<?php 
+	get_header();
+?>
 
 <?php
     if(have_posts() ){
         while(have_posts() ){
             the_post();
+			$content_to_strip = get_the_content();
+			$stripped_content = wp_strip_all_tags($content_to_strip);
 
-
-
-			the_content();
 			echo '
-			<p>test</p>
-			<script> console.log("test13213231312312312") </script>
-			';
+	<!-- Site content -->
+	<div class="contents">
+		<div class="event_single-wrap">
 
+			<!-- content -->
+			<div class="event_single">
+				';
+			if ( get_field("event_image") ) {
+				echo '
+				<div class="panel_img">
+					<img src="'.get_field("event_image").'">
+				</div>
+				'; // end IF echo
+			}
+			echo '
+				<div class="panel_text">
+					<p class="panel_title">
+						'.get_the_title().'
+					</p>
+
+					<p class="panel_description">
+						'.$stripped_content.'
+					</p>
+				</div>
+			</div>
+		</div>
+			';
         }
     } else {
-
+			echo '
+	<!-- Site content -->
+	<div class="contents">
+		<div class="event_single-wrap">
+			<p>Something went horribly wrong (single-custom_event.php)</p>
+		</div>
+				';
 	}
 ?>
 
-
-<?php
-get_footer();
+<?php 
+	get_footer();
+?>

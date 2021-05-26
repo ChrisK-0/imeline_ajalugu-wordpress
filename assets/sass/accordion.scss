@@ -120,7 +120,7 @@
         flex-grow: 1;
         margin-bottom: -0.625rem;
         text-decoration: none;
-        
+        color: $color-anchor-red;
     }
 
     &_description {
@@ -256,7 +256,7 @@
     }
 }
 
-.view_acordions {
+.view_accordions {
     @include boldFont;
 
     display: flex;
