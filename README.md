@@ -74,3 +74,13 @@ Put a pause for the Event category sorting until a solution is made. Made accord
 ### Single page for accordion events
 
 Need to add CSS to the anchors inside accordions and fit single-custom_event.php with proper content.
+
+## Day 33
+
+### Single and archive page CSS/structure
+
+Archive page can be accessed with a link in front page, under the accordion.
+Anchor tags inside accordions have anchord red coloring and can be clicked to view the event's single page. Single event page has the same meta fields as the front page to avoid having to give every single event the same text. Accordion archive page still has it's own meta fields.
+
+Single event comparison
+![Single event comparison](https://i.imgur.com/wzn5uvH.png)
