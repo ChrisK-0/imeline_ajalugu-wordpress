@@ -1,10 +1,4 @@
 <?php
-/*
-Template Name: Kappa
-Template Post Type: post, page, product, custom_event
-*/
-
-
     get_header();
 ?>
 
@@ -137,8 +131,8 @@ foreach( $terms as $term ) {
 
 ?>
     <div class="view_accordions">
-        <!-- Link to the accordion acrhive page -->
-        <a class="view_accordions-all" href="<?php echo get_page_link( 181 ); ?>">Vaata kõiki</a>
+        <!-- Link to the accordion archive page -->
+        <a class="view_accordions-all" href="<?php echo get_post_type_archive_link( 'custom_event' ); ?>">Vaata kõiki</a>
     </div>
 <!-- Valmis! button div-->
     <div class="btn-wrapper">

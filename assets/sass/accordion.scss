@@ -121,6 +121,8 @@
         margin-bottom: -0.625rem;
         text-decoration: none;
         color: $color-anchor-red;
+
+
     }
 
     &_description {
@@ -146,6 +148,10 @@
     }
 }
 
+a.panel_title:hover {
+    text-decoration: underline;
+    color: $color-panel-brown;
+}
 
 .next_theme {
     @include redButton;

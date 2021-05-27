@@ -1,25 +1,20 @@
 <?php
 /**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * The template for displaying archive pages
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package imeline-ajalugu
  */
 
- /*
-Template Name: Acordion archive
-*/
-?>
-
-
-<?php
     get_header();
+
+    $events_archive_page = get_page_by_path( 'custom_event' );
+    $events_archive_id = $events_archive_page->ID;
+
+    $events_archive_query = new WP_Query( 'page_id='.$events_archive_id );
+    while ($events_archive_query -> have_posts()) : $events_archive_query -> the_post(); 
+    endwhile;
 ?>
 
 <!-- Site content -->
@@ -30,7 +25,7 @@ Template Name: Acordion archive
         <h2 class="intro_title">
             <?=
                 get_field('intro_title');
-            ?>     
+            ?>
         </h2>
 
         <p class="intro_text">
@@ -41,7 +36,7 @@ Template Name: Acordion archive
     </div>
 
 <!-- Accordion content + accordion generator -->
-<?php 
+<?php
     // getting category names
     $terms = get_terms( array(
         'taxonomy'   => 'categories',
@@ -152,6 +147,10 @@ foreach( $terms as $term ) {
         <input type="button" id="doneButton" value="Valmis!" class="btn btn-disabled" disabled>
     </div>
 
-<?php 
+<?php
+    // this magic line sets the archive page to actually be archive page and get proper meta fields.
+    while ($events_archive_query -> have_posts()) : $events_archive_query -> the_post(); 
+    endwhile;
+
     get_footer();
 ?>

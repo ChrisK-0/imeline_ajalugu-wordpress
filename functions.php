@@ -108,8 +108,6 @@ function create_categories_hierarchical_taxonomy() {
 add_action( 'init', 'create_categories_hierarchical_taxonomy', 'manage_edit-custom_category', 15 );
 
 
-
-
 // custom taxonomy pattern column
 
 add_filter( 'manage_edit-categories_columns', 'create_categories_pattern_column', 11, 1  );
@@ -153,7 +151,6 @@ function categories_posts_orderby( $query ) {
 		$query->set( 'meta_type', 'numeric' );
 	  }
 }
-
 
 
 // Advanced Custom Fields
