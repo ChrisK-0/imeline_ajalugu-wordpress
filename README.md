@@ -84,3 +84,11 @@ Anchor tags inside accordions have anchord red coloring and can be clicked to vi
 
 Single event comparison
 ![Single event comparison](https://i.imgur.com/wzn5uvH.png)
+
+## Day 34
+
+### Archive page fixes and cover/accordion CSS adjustments
+
+Goto accordion image and anchor will not be displayed on single event pages, because no accordions are present. 
+Added hover CSS to single events inside accordions.
+Added a WHILE that had nothing inside before wp_footer() inside archive-custom_event.php to help the archive page get it's proper meta fields.
