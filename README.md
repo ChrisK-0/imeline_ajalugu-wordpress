@@ -92,3 +92,9 @@ Single event comparison
 Goto accordion image and anchor will not be displayed on single event pages, because no accordions are present. 
 Added hover CSS to single events inside accordions.
 Added a WHILE that had nothing inside before wp_footer() inside archive-custom_event.php to help the archive page get it's proper meta fields.
+
+## Day 35
+
+### Created event_archive() function for archive page IDs and is_check
+
+Multiple places used the archive page's id, so it was turned into a function. Archive page for some reason uses random post data from one of the events. To counter that, there are 2 magical lines in archive-custom_event.php, one for header and one for footer. Footer is necessary for footer meta fields, header is currently modified to already us archive page IDs. Both magic lines are to be temporary until a proper solution is found.
