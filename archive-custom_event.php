@@ -7,6 +7,7 @@
  * @package imeline-ajalugu
  */
 
+    // magic line
     $reset_event_archive = new WP_Query( 'page_id='.event_archive()['id'] );
     $reset_event_archive -> the_post();
 
@@ -147,6 +148,7 @@ wp_reset_query();
     </div>
 
 <?php
+    // this magic line sets the archive page to actually be archive page and get proper meta fields.
     $reset_event_archive = new WP_Query( 'page_id='.event_archive()['id'] );
     $reset_event_archive -> the_post();
 
