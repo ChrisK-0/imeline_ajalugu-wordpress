@@ -1,13 +1,10 @@
 <?php
-// if its not the front page, use front page's footer meta fields
+// if its not the front or the archive page, use front page's footer meta fields
 $front_page_id = get_option('page_on_front');
 
-$events_archive_page = get_page_by_path( 'custom_event' );
-$events_archive_id = $events_archive_page->ID;
-
-if ( !is_page($front_page_id) && !is_archive($events_archive_id) ) {
+if ( !is_front_page() && !event_archive()['is_archive'] ) {
     $front_page_query = new WP_Query( 'page_id='.$front_page_id );
-    while ($front_page_query -> have_posts()) : $front_page_query -> the_post(); 
+    while ($front_page_query -> have_posts()) : $front_page_query -> the_post();
         echo '
         <!-- description content -->
         <div class="description">

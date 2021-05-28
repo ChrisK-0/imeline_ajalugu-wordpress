@@ -8,9 +8,6 @@
 
     <?php
         wp_head();
-        $post = get_post();
-        $events_archive_page = get_page_by_path( 'custom_event' );
-        $events_archive_id = $events_archive_page->ID;
     ?>
 
 </head>
@@ -37,17 +34,11 @@
                 <p class="cover_paragraph">
                     <?php
                         $front_page_id = get_option('page_on_front');
-                        $front_page_query = new WP_Query( 'page_id='.$front_page_id );
-                        $events_archive_query = new WP_Query( 'page_id='.$events_archive_id );
-                        
-                        if ( is_archive($events_archive_id) ) {
-                            while ($events_archive_query -> have_posts()) : $events_archive_query -> the_post(); 
-                    the_field('cover_paragraph');
-                            endwhile;
-                        } else {
-                            while ($front_page_query -> have_posts()) : $front_page_query -> the_post(); 
-                    the_field('cover_paragraph');
-                            endwhile;
+
+                        if ( event_archive()['is_archive'] ) {
+                    the_field('cover_paragraph', event_archive()['id'] );
+                        } elseif ( is_front_page() ) {
+                    the_field('cover_paragraph', $front_page_id );
                         }
                     ?>
                 </p>
@@ -57,15 +48,17 @@
             <?php
 
 
-            if ( is_page($front_page_id) || is_archive($events_archive_id) ) {
+            if ( is_page($front_page_id) xor event_archive()['is_archive'] ) {
                 echo '
                 <a id="gotoAccordionAnchor">
                     <p><img class="cover_anchor-arrow" src="'.get_template_directory_uri().'/assets/imgs/goto_arrow_down.png">
-                        '.get_field('cover_anchor').'
+                        ';
+                echo ( event_archive()['is_archive']) ? the_field('cover_anchor', event_archive()['id']) : the_field('cover_anchor');
+                echo '
                     </p>
                 </a>
                     ';
-            }
+            } 
             ?>
             </div>
     </div>

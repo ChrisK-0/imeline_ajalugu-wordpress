@@ -185,3 +185,12 @@ function my_acf_json_load_point( $paths ) {
     return $paths;
 }
 
+function event_archive() {
+	$events_archive_page = get_page_by_path( 'custom_event' );
+	$events_archive_id = $events_archive_page->ID;
+
+	return [
+		'id'			=> $events_archive_id,
+		'is_archive'	=> is_archive($events_archive_id)
+	];
+}

@@ -1,20 +1,16 @@
 <?php
 /**
- * The template for displaying archive pages
+ * Custom events archive page
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package imeline-ajalugu
  */
 
+    $reset_event_archive = new WP_Query( 'page_id='.event_archive()['id'] );
+    $reset_event_archive -> the_post();
+
     get_header();
-
-    $events_archive_page = get_page_by_path( 'custom_event' );
-    $events_archive_id = $events_archive_page->ID;
-
-    $events_archive_query = new WP_Query( 'page_id='.$events_archive_id );
-    while ($events_archive_query -> have_posts()) : $events_archive_query -> the_post(); 
-    endwhile;
 ?>
 
 <!-- Site content -->
@@ -23,15 +19,19 @@
     <!-- Accordion heading -->
     <div class="intro" id="accordionTitle">
         <h2 class="intro_title">
-            <?=
-                get_field('intro_title');
+            <?php
+                if ( event_archive()['is_archive'] ) {
+            the_field('intro_title', event_archive()['id'] );
+                }
             ?>
         </h2>
 
         <p class="intro_text">
-            <?=
-                get_field('intro_text');
-            ?>                
+        <?php
+            if ( event_archive()['is_archive'] ) {
+            the_field('intro_text', event_archive()['id'] );
+            }
+        ?>
         </p>
     </div>
 
@@ -69,6 +69,8 @@ foreach( $terms as $term ) {
             )
         );
 
+    global $post;
+
     if( $custom_events_posts->have_posts() ) {
         // give panels numbers for uniqueness
         $event_label_number = 0;
@@ -85,7 +87,7 @@ foreach( $terms as $term ) {
     <div class="panel">
             '; // end echo
 
-
+        // accordion creation WHILE
         while($custom_events_posts->have_posts()) : $custom_events_posts->the_post();
             // separate labels for each checkbox inside the div with class "panel"
 
@@ -131,15 +133,12 @@ foreach( $terms as $term ) {
         }
 
         echo '</div>'; // ends the div with class panel, which holds all the labels for an accordion
-
     }; // END IF
-
-    wp_reset_query();
-
     // increment current accordion number by 1 for each category loop
     $current_accordion_number++;
 } // END TERMS FOREACH
-
+wp_reset_postdata();
+wp_reset_query();
 ?>
 
 <!-- Valmis! button div-->
@@ -148,9 +147,8 @@ foreach( $terms as $term ) {
     </div>
 
 <?php
-    // this magic line sets the archive page to actually be archive page and get proper meta fields.
-    while ($events_archive_query -> have_posts()) : $events_archive_query -> the_post(); 
-    endwhile;
+    $reset_event_archive = new WP_Query( 'page_id='.event_archive()['id'] );
+    $reset_event_archive -> the_post();
 
     get_footer();
 ?>
