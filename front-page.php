@@ -130,9 +130,9 @@ foreach( $terms as $term ) {
 } // END TERMS FOREACH
 
 ?>
-    <div class="view_accordions">
+    <div class="page_view">
         <!-- Link to the accordion archive page -->
-        <a class="view_accordions-all" href="<?php echo get_post_type_archive_link( 'custom_event' ); ?>">Vaata kõiki</a>
+        <a class="page_view-all" href="<?php echo get_post_type_archive_link( 'custom_event' ); ?>">Vaata kõiki</a>
     </div>
 <!-- Valmis! button div-->
     <div class="btn-wrapper">

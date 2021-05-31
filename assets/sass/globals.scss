@@ -41,7 +41,28 @@ body {
     }
 }
 
+.page_view {
+    @include boldFont;
+
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+
+    &-all {
+        font-family: $font-family-primary;
+        border-radius: 35%;
+        color: $color-anchor-red;
+        text-decoration: none;
+        margin: 15px;
+        padding: 6px;
+        background-color: $color-active-header-dark;
+        box-shadow: 0 0 0.5rem 0.5rem rgba($color-active-header-dark, 0.65);
+    }
+}
+
 .event_single {
+
     &-wrap {
         display: flex;
         flex-flow: column wrap;

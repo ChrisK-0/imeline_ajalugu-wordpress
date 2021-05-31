@@ -49,6 +49,11 @@
 	}
 ?>
 
+	<div class="page_view">
+        <!-- Link to the accordion archive page -->
+        <a class="page_view-all page_view-single" href="<?php echo get_home_url( 'custom_event' ); ?>">Tagasi esilehele</a>
+	</div>
+
 <?php 
 	get_footer();
 ?>

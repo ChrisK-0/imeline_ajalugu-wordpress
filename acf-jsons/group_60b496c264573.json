@@ -1,11 +1,11 @@
 {
-    "key": "group_609e754d53faf",
-    "title": "Cover",
+    "key": "group_60b496c264573",
+    "title": "Modal",
     "fields": [
         {
-            "key": "field_609e75549929f",
-            "label": "Cover paragraph",
-            "name": "cover_paragraph",
+            "key": "field_60b49766edaa4",
+            "label": "Modal content",
+            "name": "modal_content",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -29,22 +29,15 @@
                 "operator": "==",
                 "value": "front_page"
             }
-        ],
-        [
-            {
-                "param": "page",
-                "operator": "==",
-                "value": "181"
-            }
         ]
     ],
-    "menu_order": 2,
-    "position": "acf_after_title",
+    "menu_order": 0,
+    "position": "normal",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1622449863
+    "modified": 1622448013
 }

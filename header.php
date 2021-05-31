@@ -43,17 +43,14 @@
                     ?>
                 </p>
             </div>
-
             <div class="cover_anchor">
             <?php
-
-
             if ( is_page($front_page_id) xor event_archive()['is_archive'] ) {
                 echo '
                 <a id="gotoAccordionAnchor">
                     <p><img class="cover_anchor-arrow" src="'.get_template_directory_uri().'/assets/imgs/goto_arrow_down.png">
                         ';
-                echo ( event_archive()['is_archive']) ? the_field('cover_anchor', event_archive()['id']) : the_field('cover_anchor');
+                echo ( event_archive()['is_archive']) ? the_field('anchor_text', event_archive()['id']) : the_field('anchor_text');
                 echo '
                     </p>
                 </a>

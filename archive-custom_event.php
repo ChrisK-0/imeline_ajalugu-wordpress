@@ -129,7 +129,7 @@ foreach( $terms as $term ) {
             echo '
         <div class="panel_next">
             <button class="next_theme">Järgmine teema</button>
-        </div>    
+        </div>
                 '; // end echo
         }
 
@@ -141,6 +141,11 @@ foreach( $terms as $term ) {
 wp_reset_postdata();
 wp_reset_query();
 ?>
+
+    <div class="page_view">
+        <!-- Link to the accordion archive page -->
+        <a class="page_view-all" href="<?php echo get_home_url( 'custom_event' ); ?>">Tagasi esilehele</a>
+	</div>
 
 <!-- Valmis! button div-->
     <div class="btn-wrapper">

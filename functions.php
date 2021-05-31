@@ -111,7 +111,7 @@ add_action( 'init', 'create_categories_hierarchical_taxonomy', 'manage_edit-cust
 // custom taxonomy pattern column
 
 add_filter( 'manage_edit-categories_columns', 'create_categories_pattern_column', 11, 1  );
-add_action( 'manage_categories_custom_column', 'categories_pattern_column_metafield', 12, 3 );
+add_action( 'manage_categories_custom_column', 'categories_pattern_custom_columns', 12, 3 );
 add_action( 'pre_get_posts', 'categories_posts_orderby', 1 );
 add_filter( 'manage_edit-categories_sortable_columns', 'categories_sortable_columns' );
 
@@ -122,7 +122,7 @@ function create_categories_pattern_column( $columns ) {
 }
 
 // get pattern metafield from custom meta fields
-function categories_pattern_column_metafield( $value, $column, $term_id ) {
+function categories_pattern_custom_columns( $value, $column, $term_id ) {
 	$get_custom_category = get_term($term_id /*, 'custom_category'*/);
 	$get_order_meta = get_field('category_order', $get_custom_category);
 	switch($column) {
