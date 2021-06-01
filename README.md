@@ -104,3 +104,9 @@ Multiple places used the archive page's id, so it was turned into a function. Ar
 ### Links to other pages in every page, CSS adjustments, admin meta field positioning
 
 Single event and archive page now link to the front page. Single event page cover background is no longer cut at the bottom. Made the link position to left instead of right. Separated modal meta field from footer in admin panel; moved longer text fields into the block editor from the right side panel.
+
+## Day 37
+
+### Setup for adding accordions with AJAX
+
+Made a button for front page that is supposed to add accordions, unfinished.
