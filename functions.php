@@ -212,6 +212,7 @@ function imeline_ajalugu_jquery() {
 	wp_register_script('load_accordion_ajax', get_template_directory_uri() . '/assets/js/custom_accordion_ajax.js', array('jquery'), '1.0', true );
 	// enqueue the script
 	wp_enqueue_script('load_accordion_ajax');
+	// PHP theme path to JS (jQuery)
 	wp_register_script( 'phpTOjs', 'theme_url' );
 	wp_enqueue_script( 'phpTOjs' );
 	$imeline_path_jquery = array( 'phpThemeAssets' => get_stylesheet_directory_uri().'/assets/php/' );
