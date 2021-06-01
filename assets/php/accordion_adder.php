@@ -1,28 +1,8 @@
+<!-- Accordion content + accordion generator -->
 <?php
-    get_header();
-?>
+$custom_include_wpload = preg_replace('/wp-content.*$/','',__DIR__);
+include($custom_include_wpload.'wp-load.php');
 
-<!-- Site content -->
-<div class="contents">
-
-    <!-- Accordion heading -->
-    <div class="intro" id="accordionTitle">
-        <h2 class="intro_title">
-            <?=
-                get_field('intro_title');
-            ?>     
-        </h2>
-
-        <p class="intro_text">
-            <?=
-                get_field('intro_text');
-            ?>                
-        </p>
-    </div>
-    
-    <div class="accordion_container">
-
-<?php 
     // getting category names
     $terms = get_terms( array(
         'taxonomy'   => 'categories',
@@ -34,6 +14,7 @@
 
     // accordion per page limiter
     $accordions_per_page = get_field('accordions_per_page');
+    $accordions_per_page++;
 
     $current_accordion_number = 0;
     $published_categories = count($terms);
@@ -130,25 +111,4 @@ foreach( $terms as $term ) {
     }
 } // END TERMS FOREACH
 
-?>
-    <!-- accordion_container div ending -->
-    </div>
-
-    <!-- Link to the accordion archive page -->
-    <div class="page_view">
-        <a class="page_view-all" href="<?php echo get_post_type_archive_link( 'custom_event' ); ?>">Vaata kõiki</a>
-        <!-- Add extra accordions -->
-        <button class="page_view-all" onClick="addAccordion()" >Lisa akkordion</button>
-        <div class="test_add">
-
-        </div>
-    </div>
-
-<!-- Valmis! button div-->
-    <div class="btn-wrapper">
-        <input type="button" id="doneButton" value="Valmis!" class="btn btn-disabled" disabled>
-    </div>
-
-<?php 
-    get_footer();
 ?>

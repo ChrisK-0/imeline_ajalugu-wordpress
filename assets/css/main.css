@@ -48,13 +48,14 @@ body {
 }
 
 .page_view {
-  font-weight: bold;
   display: flex;
   justify-content: flex-start;
   align-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .page_view-all {
+  font-weight: bold;
   font-family: "PT Sans Narrow", sans-serif;
   border-radius: 35%;
   color: #a62300;
@@ -63,6 +64,8 @@ body {
   padding: 6px;
   background-color: #ffe756;
   box-shadow: 0 0 0.5rem 0.5rem rgba(255, 231, 86, 0.65);
+  border: none;
+  cursor: pointer;
 }
 
 .event_single-wrap {
