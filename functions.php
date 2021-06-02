@@ -258,6 +258,7 @@ function get_ajax_posts() {
 
 		// The Query
 
+		// continue to skip X amount of accordions from already displaying (max number) of accordions
 		if ($term <= $terms[$accordions_per_page] || $accordions_per_page == 0) {
 			continue;			
 		}
