@@ -110,3 +110,9 @@ Single event and archive page now link to the front page. Single event page cove
 ### Setup for adding accordions with AJAX
 
 Made a button for front page that is supposed to add accordions, unfinished.
+
+## Day 38
+
+### Added accordions can't be clicked, adds in a random order
+
+When initially displayed, the order of the accordions seems to be accordingly to how they are displayed in the custom post type taxonomy table. When added with ajax, the order of accordions is taken from the custom post type table.
