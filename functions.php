@@ -156,11 +156,11 @@ function categories_posts_orderby( $query ) {
 // Advanced Custom Fields
 
 // Define path and URL to the ACF plugin.
-define( 'MY_ACF_PATH', get_stylesheet_directory() . '/assets/acf/' );
-define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/assets/acf/' );
+define( 'MY_ACF_PATH', WP_PLUGIN_DIR . '/acf');
+define( 'MY_ACF_URL', WP_PLUGIN_DIR . '/acf');
 
 // Include the ACF plugin.
-include_once( MY_ACF_PATH . 'acf.php' );
+include_once( MY_ACF_PATH . '/acf.php' );
 
 // Customize the url setting to fix incorrect asset URLs.
 add_filter('acf/settings/url', 'my_acf_settings_url');
@@ -195,29 +195,149 @@ function event_archive() {
 	];
 }
 
+
 // ajax
-/*
-add_action( 'wp_enqueue_scripts', 'custom_ajax_hookin' );
-function custom_ajax_hookin() {
-	wp_enqueue_script( 'ajax-script', get_template_directory_uri() . 'assets/js/custom_accordion_ajax.js', array('jquery') );
-	wp_localize_script( 'ajax-script', 'custom_accordion_ajax', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_scripts' );
+function theme_enqueue_scripts() {
+    /**
+     * frontend ajax requests.
+     */
+    wp_enqueue_script( 'frontend-ajax',  get_template_directory_uri() . '/assets/js/custom_accordion_ajax.js', array('jquery'), null, true );
+    wp_localize_script( 'frontend-ajax', 'frontend_ajax_object',
+        array( 
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'accordionadderurl' => get_template_directory_uri().'/assets/php/accordion_adder.php',
+        )
+    );
 }
-*/
 
-wp_enqueue_script('jquery');
 
-//this goes in functions.php near the top
-function imeline_ajalugu_jquery() {
-	// register your script location, dependencies and version
-	wp_register_script('load_accordion_ajax', get_template_directory_uri() . '/assets/js/custom_accordion_ajax.js', array('jquery'), '1.0', true );
-	// enqueue the script
-	wp_enqueue_script('load_accordion_ajax');
-	// PHP theme path to JS (jQuery)
-	wp_register_script( 'phpTOjs', 'theme_url' );
-	wp_enqueue_script( 'phpTOjs' );
-	$imeline_path_jquery = array( 'phpThemeAssets' => get_stylesheet_directory_uri().'/assets/php/' );
-	//after wp_enqueue_script
-	wp_localize_script( 'phpTOjs', 'object_name', $imeline_path_jquery );
+// Fire AJAX action for both logged in and non-logged in users
+add_action('wp_ajax_get_ajax_posts', 'get_ajax_posts');
+add_action('wp_ajax_nopriv_get_ajax_posts', 'get_ajax_posts');
+// ADD ACCORDION
+function get_ajax_posts() {
+
+    // getting category names
+    $terms = get_terms( array(
+        'taxonomy'   => 'categories',
+        'hide_empty' => true, 
+    ));
+
+
+    // accordion per page limiter
+	$front_page_id = get_option('page_on_front');
+    $accordions_per_page = get_field('accordions_per_page', $front_page_id);
+	$next_accordion_to_add = $accordions_per_page;
+
+    // give accordion a number for uniqueness
+    $accordion_number = $next_accordion_to_add;
+
+    $current_accordion_number = $next_accordion_to_add;
+    $published_categories = count($terms);
+
+	$response = '';
+
+	foreach ($terms as $term) {
+		// The Query
+		// create array for events
+		$custom_events_posts = new WP_Query(
+			array(
+				'post_type' => 'custom_event',
+				// 'orderby' => 'ASC', // rand, DESC, ASC
+				'post_status' => 'publish',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'categories',
+						'field' => 'slug',
+						'terms' => $term
+					)
+				)
+			)
+		);
+
+		// The Query
+
+		if ($term <= $terms[$accordions_per_page] || $accordions_per_page == 0) {
+			continue;			
+		}
+
+		if ( $custom_events_posts->have_posts() ) {
+
+
+			// give panels numbers for uniqueness
+			$event_label_number = 0;
+
+			echo '
+		<button class="accordion">
+			<span class="accordion_header">
+					'.$term->name.'
+			</span>
+
+			<span class="accordion_counter"><span class="accordion_counter">0</span> / 3</span>
+		</button>
+
+		<div class="panel">
+				'; // end echo
+
+
+			while ( $custom_events_posts->have_posts() ) {
+				$custom_events_posts->the_post();
+
+				// $response .= $accordions_per_page;
+
+
+				$content_to_strip = get_the_content();
+				$stripped_content = wp_strip_all_tags($content_to_strip);
+	
+				echo '
+			<label class="panel_content" for="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
+				<input type="checkbox" class="panel_input" id="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
+				<span class="checkmark-custom"></span>
+						'; // end echo
+					if ( get_field("event_image") ) {
+						echo '
+				<div class="panel_img">
+					<img src="'.get_field("event_image").'">
+				</div>
+						'; // end echo
+					}
+					echo '
+				<div class="panel_text">
+					<a class="panel_title" href="'.get_page_uri($post).'">
+						'.get_the_title().'
+					</a>
+	
+					<p class="panel_description">
+						'.$stripped_content.'
+					</p>
+				</div>
+			</label>
+					'; // end echo
+				$event_label_number++;
+
+
+			} // end while
+
+			$accordion_number++;
+		} /* else {
+			$response .= get_template_part('none');
+		} */ // end if
+
+		echo '</div>'; // ends the div with class panel, which holds all the labels for an accordion
+
+		wp_reset_query();
+
+		// increment current accordion number by 1 for each category loop
+		$current_accordion_number++;
+
+	}; // end for each
+
+
+
+	echo $response;
+
+
+    // exit; // exit ajax call(or it will return useless information to the response)
+    wp_die();
 }
-add_action('wp_enqueue_scripts', 'imeline_ajalugu_jquery');
-

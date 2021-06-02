@@ -43,7 +43,7 @@ foreach( $terms as $term ) {
         $custom_events_posts = new WP_Query(
             array(
                 'post_type' => 'custom_event',
-                'orderby' => 'rand', // rand, DESC, ASC
+                'orderby' => 'ASC', // rand, DESC, ASC
                 'post_status' => 'publish',
                 'tax_query' => array(
                     array(
@@ -72,7 +72,8 @@ foreach( $terms as $term ) {
             '; // end echo
 
 
-        while($custom_events_posts->have_posts()) : $custom_events_posts->the_post();
+        while($custom_events_posts->have_posts()) : 
+            $custom_events_posts->the_post();
             // separate labels for each checkbox inside the div with class "panel"
 
             // filter get_the_content, so it doesnt add extra <p> tags
@@ -125,7 +126,7 @@ foreach( $terms as $term ) {
     // increment current accordion number by 1 for each category loop
     $current_accordion_number++;
     // if current accordion number is equal to manually set accordions per page, then break the foreach category loop
-    if ($current_accordion_number == ($accordions_per_page) ) {
+    if ($current_accordion_number == $accordions_per_page ) {
         break;
     }
 } // END TERMS FOREACH
@@ -137,11 +138,14 @@ foreach( $terms as $term ) {
     <!-- Link to the accordion archive page -->
     <div class="page_view">
         <a class="page_view-all" href="<?php echo get_post_type_archive_link( 'custom_event' ); ?>">Vaata kõiki</a>
-        <!-- Add extra accordions -->
-        <button class="page_view-all" onClick="addAccordion()" >Lisa akkordion</button>
-        <div class="test_add">
-
-        </div>
+        <?php // add more acccordions button not included when all accordions are already displayed
+            if ( $accordions_per_page != 0 ) {
+                echo '
+                <!-- Add extra accordions -->
+                <button id="add_accordion_ajax" class="page_view-all">Lisa akkordion</button>
+                    '; // end echo
+            }
+        ?>
     </div>
 
 <!-- Valmis! button div-->

@@ -2,6 +2,7 @@
     get_header();
 ?>
 
+<?php $post = get_post($_POST['id']); ?>
 <?php
     if(have_posts() ){
         while(have_posts() ){

@@ -1,18 +1,17 @@
-var phpThemeAssets = object_name.phpThemeAssets;
-
-function addAccordion() {
-    // jQuery('.accordion_container').load( phpThemeAssets +'accordion_adder.php');
-    var AccordionAdder = jQuery('.accordion_container').load( phpThemeAssets +'accordion_adder.php');
-    jQuery('.accordion_container').append( AccordionAdder );
-};
-
 jQuery(document).ready(function() {
+    jQuery.ajax({
+        type: 'POST',
+        url: frontend_ajax_object.ajaxurl,
+        dataType: "html", // add data type
+        data: { action : 'get_ajax_posts' },
+        success: function( response ) {
+            
+            jQuery('#add_accordion_ajax').click(function() {
+                // console.log( response );
+                //jQuery( '.accordion_container' ).html( response ); // frontend_ajax_object.accordionadderurl
+                jQuery( response ).appendTo('.accordion_container');
+            })
 
-    jQuery.ajax({ type: "GET",   
-        url: phpThemeAssets+'accordion_adder.php',   
-        success : function(load_custom_events) {
-            // jQuery('.accordion_container').append(addAccordion());
-            jQuery('.accordion_container').append( load_custom_events );
         }
     });
 });
