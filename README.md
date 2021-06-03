@@ -116,3 +116,10 @@ Made a button for front page that is supposed to add accordions, unfinished.
 ### Added accordions can't be clicked, adds in a random order
 
 When initially displayed, the order of the accordions seems to be accordingly to how they are displayed in the custom post type taxonomy table. When added with ajax, the order of accordions is taken from the custom post type table.
+
+## Day 39
+
+### Function get_ajax_posts progress update
+
+This function is currently work-in-progress.
+Adds the remaining 2 accordions from 5, still un-openable and can be added infinitely.
