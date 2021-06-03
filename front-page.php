@@ -26,7 +26,10 @@
     // getting category names
     $terms = get_terms( array(
         'taxonomy'   => 'categories',
-        'hide_empty' => true, 
+        'hide_empty' => true,
+        'post_status' => 'publish',
+        'orderby' => 'date', // rand, DESC, ASC
+        'order' => 'ASC'
     ));
 
     // give accordion a number for uniqueness
@@ -39,21 +42,21 @@
     $published_categories = count($terms);
 
 foreach( $terms as $term ) {
-        // create array for events
-        $custom_events_posts = new WP_Query(
-            array(
-                'post_type' => 'custom_event',
-                'orderby' => 'ASC', // rand, DESC, ASC
-                'post_status' => 'publish',
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'categories',
-                        'field' => 'slug',
-                        'terms' => $term
-                    )
+    // create array for events
+    $custom_events_posts = new WP_Query(
+        array(
+            'post_type' => 'custom_event',
+            'orderby' => 'DESC', // rand, DESC, ASC
+            'post_status' => 'publish',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'categories',
+                    'field' => 'slug',
+                    'terms' => $term
                 )
             )
-        );
+        )
+    );
 
     if( $custom_events_posts->have_posts() ) {
         // give panels numbers for uniqueness
@@ -74,12 +77,15 @@ foreach( $terms as $term ) {
 
         while($custom_events_posts->have_posts()) : 
             $custom_events_posts->the_post();
-            // separate labels for each checkbox inside the div with class "panel"
+            
+            $next_post = get_next_post();
+            $prev_post = get_previous_post();
 
             // filter get_the_content, so it doesnt add extra <p> tags
             $content_to_strip = get_the_content();
             $stripped_content = wp_strip_all_tags($content_to_strip);
 
+            // separate labels for each checkbox inside the div with class "panel"
             echo '  
         <label class="panel_content" for="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
             <input type="checkbox" class="panel_input" id="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
@@ -99,7 +105,9 @@ foreach( $terms as $term ) {
                 </a>
 
                 <p class="panel_description">
-                    '.$stripped_content.'
+                    '.$stripped_content.'<br>'. 
+                    'This post id = '.$post->ID.'<br>'.
+                    'Next post id = '.$next_post->ID.'
                 </p>
             </div>
         </label>
@@ -120,6 +128,9 @@ foreach( $terms as $term ) {
         echo '</div>'; // ends the div with class panel, which holds all the labels for an accordion
 
     }; // END IF
+
+    $current_taxo = $term;
+    // next($terms);
 
     wp_reset_query();
 
@@ -147,6 +158,14 @@ foreach( $terms as $term ) {
             }
         ?>
     </div>
+
+    <?php
+
+
+        // echo "<script>console.log(".$current_taxo->name.");</script>";
+
+        echo $current_taxo->name;
+    ?>
 
 <!-- Valmis! button div-->
     <div class="btn-wrapper">

@@ -41,7 +41,10 @@
     // getting category names
     $terms = get_terms( array(
         'taxonomy'   => 'categories',
-        'hide_empty' => true, 
+        'hide_empty' => true,
+        'post_status' => 'publish',
+        'orderby' => 'date', // rand, DESC, ASC
+        'order' => 'ASC'
     ));
 
     // give accordion a number for uniqueness
@@ -58,8 +61,9 @@ foreach( $terms as $term ) {
         $custom_events_posts = new WP_Query(
             array(
                 'post_type' => 'custom_event',
-                'orderby' => 'rand', // rand, DESC, ASC
                 'post_status' => 'publish',
+                'orderby' => 'date', // rand, DESC, ASC
+                'order' => 'DESC',
                 'tax_query' => array(
                     array(
                         'taxonomy' => 'categories',
@@ -96,6 +100,8 @@ foreach( $terms as $term ) {
             $content_to_strip = get_the_content();
             $stripped_content = wp_strip_all_tags($content_to_strip);
 
+            $next_post = get_next_post();
+
             echo '  
         <label class="panel_content" for="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
             <input type="checkbox" class="panel_input" id="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
@@ -120,6 +126,7 @@ foreach( $terms as $term ) {
             </div>
         </label>
                 '; // end echo
+                
             $event_label_number++;
 
         endwhile; 
@@ -138,7 +145,7 @@ foreach( $terms as $term ) {
     // increment current accordion number by 1 for each category loop
     $current_accordion_number++;
 } // END TERMS FOREACH
-wp_reset_postdata();
+
 wp_reset_query();
 ?>
 
@@ -156,6 +163,8 @@ wp_reset_query();
     // this magic line sets the archive page to actually be archive page and get proper meta fields.
     $reset_event_archive = new WP_Query( 'page_id='.event_archive()['id'] );
     $reset_event_archive -> the_post();
+    
+    
 
     get_footer();
 ?>
