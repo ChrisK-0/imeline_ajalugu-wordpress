@@ -196,7 +196,7 @@ function theme_enqueue_scripts() {
     wp_localize_script( 'frontend-ajax', 'frontend_ajax_object',
         array( 
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
-            'accordionadderurl' => get_template_directory_uri().'/assets/php/accordion_adder.php',
+			//'mybundlejs' => get_template_directory_uri().'/assets/js/bundle.js',
         )
     );
 }
@@ -213,7 +213,7 @@ function get_ajax_posts() {
         'taxonomy'   => 'categories',
         'hide_empty' => true,
         'post_status' => 'publish',
-        'orderby' => 'date', // rand, DESC, ASC
+        'orderby' => 'name',
         'order' => 'ASC'
     ));
 
@@ -331,6 +331,14 @@ function get_ajax_posts() {
 					} // end while
 	
 					$accordion_number++;
+
+					if ( $accordion_number != $published_categories && $accordion_number != $accordions_per_page ) {
+						echo '
+					<div class="panel_next">
+						<button class="next_theme">Järgmine teema</button>
+					</div>    
+							'; // end echo
+					}
 				} /* else {
 					$response .= get_template_part('none');
 				} */ // end if

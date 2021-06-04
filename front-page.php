@@ -20,39 +20,42 @@
         </p>
     </div>
     
-    <div class="accordion_container">
+    <div class="accordion_container" id="accordion_container">
 
-<?php 
+<?php
+    // accordion per page limiter
+    $accordions_per_page = get_field('accordions_per_page');
+
     // getting category names
-    $terms = get_terms( array(
+    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+    $term_args = array(
         'taxonomy'   => 'categories',
         'hide_empty' => true,
         'post_status' => 'publish',
-        'orderby' => 'date', // rand, DESC, ASC
-        'order' => 'ASC'
-    ));
+        'orderby' => 'name',
+        'order' => 'ASC',
+        );
+    
+    $terms = new WP_Term_Query($term_args);    
 
     // give accordion a number for uniqueness
     $accordion_number = 0;
 
-    // accordion per page limiter
-    $accordions_per_page = get_field('accordions_per_page');
-
     $current_accordion_number = 0;
-    $published_categories = count($terms);
+    $published_categories = count( $terms->get_terms() );
 
-foreach( $terms as $term ) {
+foreach( $terms->get_terms() as $term ) {
     // create array for events
     $custom_events_posts = new WP_Query(
         array(
             'post_type' => 'custom_event',
-            'orderby' => 'DESC', // rand, DESC, ASC
+            'orderby' => 'name',
             'post_status' => 'publish',
             'tax_query' => array(
                 array(
                     'taxonomy' => 'categories',
                     'field' => 'slug',
-                    'terms' => $term
+                    'terms' => $term,
                 )
             )
         )
@@ -105,9 +108,7 @@ foreach( $terms as $term ) {
                 </a>
 
                 <p class="panel_description">
-                    '.$stripped_content.'<br>'. 
-                    'This post id = '.$post->ID.'<br>'.
-                    'Next post id = '.$next_post->ID.'
+                    '.$stripped_content.'
                 </p>
             </div>
         </label>
@@ -129,10 +130,11 @@ foreach( $terms as $term ) {
 
     }; // END IF
 
-    $current_taxo = $term;
+    // potential for adding one at a time
+    // $current_taxo = $term;
     // next($terms);
 
-    wp_reset_query();
+    wp_reset_postdata();
 
     // increment current accordion number by 1 for each category loop
     $current_accordion_number++;
@@ -159,12 +161,12 @@ foreach( $terms as $term ) {
         ?>
     </div>
 
+
     <?php
-
-
+        // testing material for adding one accordion at a time
         // echo "<script>console.log(".$current_taxo->name.");</script>";
 
-        echo $current_taxo->name;
+        //echo $current_taxo->name;
     ?>
 
 <!-- Valmis! button div-->

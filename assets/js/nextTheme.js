@@ -1,4 +1,5 @@
 import {globalVariables} from './constants';
+
 // gathers first currently active accordion details
 // for nextTheme.js
 const activeHeader = document.getElementsByClassName("accordion_header-active");
@@ -37,8 +38,13 @@ const nextTheme = () => {
     } */  
 }
 
-// Next theme button. Closest the current one and opens the next one
-for (const i of globalVariables.themeChangeBtn) {
-  i.onclick = nextTheme;
+if ( globalVariables.accordionContainer ) {
+  globalVariables.accordionContainer.addEventListener('click', event => {
+    if ( event.target.className === 'accordion' ) {
+      // Next theme button. Closest the current one and opens the next one
+      for (const i of globalVariables.themeChangeBtn) {
+        i.onclick = nextTheme;
+      }
+    }; // end if
+  }); // end eventlistener
 }
-

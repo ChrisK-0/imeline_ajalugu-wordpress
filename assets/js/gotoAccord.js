@@ -5,4 +5,6 @@ function scrollToAccord() {
 
 }
 
-document.getElementById("gotoAccordionAnchor").onclick = scrollToAccord;
+if ( scrollAnchor ) {
+  document.getElementById("gotoAccordionAnchor").onclick = scrollToAccord;
+}

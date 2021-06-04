@@ -53,14 +53,20 @@ body {
 
         font-family: $font-family-primary;
         border-radius: 35%;
-        color: $color-anchor-red;
         text-decoration: none;
         margin: 15px;
         padding: 6px;
+        color: $color-anchor-red;
         background-color: $color-active-header-dark;
         box-shadow: 0 0 0.5rem 0.5rem rgba($color-active-header-dark, 0.65);
         border: none;
         cursor: pointer;
+    }
+
+    &-disabled {
+        color: $color-darkgray;
+        background-color: $color-active-header-dark;
+        box-shadow: 0 0 0.5rem 0.5rem rgba($color-active-header-dark, 0.65);
     }
 
 }

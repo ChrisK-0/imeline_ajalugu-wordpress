@@ -10,5 +10,7 @@ function refreshPage() {
     location.href = '#'
 }
 
-// Valmis! button on click refreshes the page
-globalVariables.doneBtn.onclick = refreshPage;
+if ( globalVariables.doneBtn ) {
+    // Valmis! button on click refreshes the page
+    globalVariables.doneBtn.onclick = refreshPage;
+}
