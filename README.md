@@ -123,3 +123,13 @@ When initially displayed, the order of the accordions seems to be accordingly to
 
 This function is currently work-in-progress.
 Adds the remaining 2 accordions from 5, still un-openable and can be added infinitely.
+
+## Day 40
+
+### Function get_ajax_posts adds remaining posts
+
+Plan was to make Event category taxonomy paged, but only posts can be made paged, currently made to only display the ones that are not displayed from all.
+* Event category query re-worked to WP_Terms_Query.
+* Added if statements to alot of JS files to avoid getting error spams in the console due to all sites using bundle.js, which has consts that are not available in certain sites (eg. single CPT page).
+* Added event listeners and if statements to JS files: nextTheme, accordion and checkboxes.
+* Next_theme button re-work after adding accordions needs to be made.
