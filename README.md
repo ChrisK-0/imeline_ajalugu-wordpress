@@ -133,3 +133,9 @@ Plan was to make Event category taxonomy paged, but only posts can be made paged
 * Added if statements to alot of JS files to avoid getting error spams in the console due to all sites using bundle.js, which has consts that are not available in certain sites (eg. single CPT page).
 * Added event listeners and if statements to JS files: nextTheme, accordion and checkboxes.
 * Next_theme button re-work after adding accordions needs to be made.
+
+## Day 41
+
+### Made next_theme buddon re-work on new accordion page load
+
+Didn't have enough time to figure out how I could include accordion.js in the ajax request to run the button re-work function from that file and not have the long vanilla function in ajax jQuery file.
