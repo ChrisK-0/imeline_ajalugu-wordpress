@@ -36,6 +36,39 @@ request({ url: frontend_ajax_object.ajaxurl + "?action=get_ajax_posts" })
     .error(thenError);
 */
 
+// next theme checker
+function checkNextThemeBtn() {
+    // const if ajax cant get it
+    const accordionPanel = document.getElementsByClassName('panel');
+  
+    let panelDivLength = accordionPanel.length;
+    let panelDivLast = panelDivLength-1;
+    let panelThemeBtnDiv = document.getElementsByClassName('panel_next');
+    
+  
+  
+  
+    for ( let i=0; i<panelDivLength; i++ ) {
+  
+      // if is last or already contains panel_next and btn
+      if ( i == panelDivLast /*is last panel*/ || accordionPanel[i].lastElementChild.contains(panelThemeBtnDiv[i]) /*already has div*/ ) {
+        // continue - avoid adding next_theme button
+        continue;
+      } else {
+          // create next theme parts
+          let createNextDiv = document.createElement("DIV"); // create panel_next
+          createNextDiv.className = 'panel_next';
+          let createNextBtn = document.createElement("BUTTON");
+          createNextBtn.className = 'next_theme';
+          createNextBtn.innerHTML = 'Järgmine teema';
+          createNextDiv.appendChild(createNextBtn);
+  
+        accordionPanel[i].appendChild(createNextDiv); // append to current panel
+  
+      }
+    } // for end
+  
+  } // function end
 
 
 jQuery(document).ready(function() {
@@ -45,11 +78,12 @@ jQuery(document).ready(function() {
         dataType: "html",
         data: { action : 'get_ajax_posts' },
         success: function( response ) {
-            
+
             jQuery('#add_accordion_ajax').click(function() {
                 jQuery( response ).appendTo('.accordion_container');
+                // run checkNextThemeBtn()
+                checkNextThemeBtn();
             })
-
-        }
+        },
     });
 });

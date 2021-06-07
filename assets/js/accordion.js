@@ -18,7 +18,7 @@ if ( moreAccordionBtn ) {
 if ( globalVariables.accordionContainer ) {
   globalVariables.accordionContainer.addEventListener('click', event => {
     if ( event.target.className === 'accordion' ) {
-      for (let i of globalVariables.accordionBtn) {
+      for (const i of globalVariables.accordionBtn) {
         // class toggler function on accordion button click
         i.onclick = function () {
           const toggleActiveClass = !this.classList.contains('active');
@@ -26,31 +26,27 @@ if ( globalVariables.accordionContainer ) {
           classToggler(accordionPanel, 'accordion_show', 'remove');
           classToggler(accordionHeader, 'accordion_header-active', 'remove');
           classToggler(globalVariables.themeChangeBtn, 'themeBtnActive', 'remove');
-    
+
           const findAccordionLastChild = this.nextElementSibling.childElementCount - 1;
           const findDivThemeBtn = this.nextElementSibling.children[findAccordionLastChild];
           const checkThemeBtnClass = findDivThemeBtn.classList.contains("theme_change");
-    
+
           if (toggleActiveClass) {
             this.classList.toggle("active");
             this.nextElementSibling.classList.toggle("accordion_show");
             this.children[0].classList.toggle("accordion_header-active");
-    
+
             if (checkThemeBtnClass) {
               findDivThemeBtn.children[0].classList.toggle("themeBtnActive");
-              // (for developement) console.log('theme btn found')
-    
-            } else {
-              // (for developement) console.log("There is no next accordion to give theme change button active class");
             }
-    
+
           }
-    
+
         }
-    
+
       }
     }; // end if
-    
+
   }); // end eventlistener
 }
 // template for class toggling
@@ -59,3 +55,7 @@ const classToggler = (els, className, fnName) => {
     i.classList[fnName](className);
   }
 }
+
+
+
+//const getTestBtn = document.getElementById('add_accordion_ajax');

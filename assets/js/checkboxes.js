@@ -16,7 +16,6 @@ globalVariables.accordionContainer.addEventListener('click', event => {
           Array.from(currentlyAvailableCheckboxes) // Convert checkboxes to an array to use filter and map.
             .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
             .map(i => i.value); // Use Array.map to extract only the checkbox values from the array of objects.
-        // (for developement) console.log(checkedBoxesArray);
 
         let activeAccordionSpan = globalVariables.activeAccordion[0].children[1].children[0];
 
@@ -72,7 +71,6 @@ globalVariables.accordionContainer.addEventListener('click', event => {
             globalVariables.doneBtn.classList.remove("btn-disabled");
 
           }
-          // (for developement) console.log(activeCheckboxArray.length)
         }
 
       })

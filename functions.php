@@ -153,10 +153,8 @@ function categories_posts_orderby( $query ) {
 }
 
 
+
 // Advanced Custom Fields
-
-
-
 // save JSON
 add_filter('acf/settings/save_json', 'my_acf_json_save_point');
 function my_acf_json_save_point( $path ) {
@@ -196,7 +194,7 @@ function theme_enqueue_scripts() {
     wp_localize_script( 'frontend-ajax', 'frontend_ajax_object',
         array( 
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			//'mybundlejs' => get_template_directory_uri().'/assets/js/bundle.js',
+			'mybundlejs' => get_template_directory_uri().'/assets/js/bundle.js',
         )
     );
 }
@@ -223,15 +221,14 @@ function get_ajax_posts() {
     $accordions_per_page = get_field('accordions_per_page', $front_page_id);
 
 	// variable to help with adding to already existing accordions (label id...)
-	$next_accordion_to_add = $accordions_per_page;
+	//$next_accordion_to_add = $accordions_per_page; deprecated
 
     // give accordion a number for uniqueness
-    $accordion_number = $next_accordion_to_add;
+    $accordion_number = $accordions_per_page; // remove this chain
 
 	// for if statements - counting already existing categories
-    $current_accordion_number = $next_accordion_to_add;
+    $current_accordion_number = $accordions_per_page;
     $published_categories = count($my_accordion_array);
-
 
 	// specifies the amount of accordions to add
 	$amount_of_categories = count($my_accordion_array);
@@ -244,7 +241,6 @@ function get_ajax_posts() {
 	while ( $pelmeen != $accordions_per_page ) {
 		// break everything if no more accordions are existant
 		if ( count($my_accordion_array) == 0  ) {
-			echo "<script>console.log(".count($my_accordion_array).")</script>";
 			global $my_accordion_array;
 			$my_accordion_array = 0;
 			break;
@@ -252,8 +248,6 @@ function get_ajax_posts() {
 
 		array_shift($my_accordion_array);
 		$pelmeen++;
-		echo "<script>console.log(".count($my_accordion_array).")</script>";
-
 	}
 
 
@@ -273,80 +267,74 @@ function get_ajax_posts() {
 						)
 					)
 				);
-	
+
 				if ( $custom_events_posts->have_posts() ) {
-	
+
 					// give panels numbers for uniqueness
 					$event_label_number = 0;
-	
+
 					echo '
-				<button class="accordion">
-					<span class="accordion_header">
-							'.$term->name.'
-					</span>
-	
-					<span class="accordion_counter"><span class="accordion_counter">0</span> / 3</span>
-				</button>
-	
-				<div class="panel">
+		<button class="accordion">
+			<span class="accordion_header">
+					'.$term->name.'
+			</span>
+
+			<span class="accordion_counter"><span class="accordion_counter">0</span> / 3</span>
+		</button>
+
+		<div class="panel">
 						'; // end echo
-	
-	
+
 					while ( $custom_events_posts->have_posts() ) {
 						$custom_events_posts->the_post();
-	
+
 						// $response .= $accordions_per_page;
-	
-	
+
 						$content_to_strip = get_the_content();
 						$stripped_content = wp_strip_all_tags($content_to_strip);
 	
 						echo '
-					<label class="panel_content" for="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
-						<input type="checkbox" class="panel_input" id="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
-						<span class="checkmark-custom"></span>
-								'; // end echo
-							if ( get_field("event_image") ) {
-								echo '
-						<div class="panel_img">
-							<img src="'.get_field("event_image").'">
-						</div>
-								'; // end echo
-							}
-							echo '
-						<div class="panel_text">
-							<a class="panel_title" href="'.get_page_uri($post).'">
-								'.get_the_title().'
-							</a>
-	
-							<p class="panel_description">
-								'.$stripped_content.'
-							</p>
-						</div>
-					</label>
+		<label class="panel_content" for="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
+			<input type="checkbox" class="panel_input" id="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
+			<span class="checkmark-custom"></span>
+					'; // end echo
+				if ( get_field("event_image") ) {
+					echo '
+			<div class="panel_img">
+				<img src="'.get_field("event_image").'">
+			</div>
+					'; // end echo
+				}
+				echo '
+			<div class="panel_text">
+				<a class="panel_title" href="'.get_page_uri($post).'">
+					'.get_the_title().'
+				</a>
+
+				<p class="panel_description">
+					'.$stripped_content.'
+				</p>
+			</div>
+		</label>
 							'; // end echo
 						$event_label_number++;
-	
-	
+
 					} // end while
-	
+
 					$accordion_number++;
 
 					if ( $accordion_number != $published_categories && $accordion_number != $accordions_per_page ) {
 						echo '
-					<div class="panel_next">
-						<button class="next_theme">Järgmine teema</button>
-					</div>    
+		<div class="panel_next">
+			<button class="next_theme">Järgmine teema</button>
+		</div>
 							'; // end echo
 					}
 				} /* else {
 					$response .= get_template_part('none');
 				} */ // end if
-	
-				echo '</div>'; // ends the div with class panel, which holds all the labels for an accordion
 
-
-
+		echo '</div>'; // ends the div with class panel, which holds all the labels for an accordion
 
 				// increment current accordion number by 1 for each category loop
 				$current_accordion_number++;
@@ -355,7 +343,6 @@ function get_ajax_posts() {
 				array_shift($my_accordion_array);
 
 	}; // end for each
-
 
 	wp_reset_query();
 

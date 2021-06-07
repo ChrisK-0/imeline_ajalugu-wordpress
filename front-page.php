@@ -80,7 +80,7 @@ foreach( $terms->get_terms() as $term ) {
 
         while($custom_events_posts->have_posts()) : 
             $custom_events_posts->the_post();
-            
+
             $next_post = get_next_post();
             $prev_post = get_previous_post();
 
@@ -122,7 +122,7 @@ foreach( $terms->get_terms() as $term ) {
             echo '
         <div class="panel_next">
             <button class="next_theme">Järgmine teema</button>
-        </div>    
+        </div>
                 '; // end echo
         }
 
