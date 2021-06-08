@@ -37,21 +37,18 @@ request({ url: frontend_ajax_object.ajaxurl + "?action=get_ajax_posts" })
 */
 
 // next theme checker
-function checkNextThemeBtn() {
+function createNextThemeBtn() {
     // const if ajax cant get it
     const accordionPanel = document.getElementsByClassName('panel');
   
     let panelDivLength = accordionPanel.length;
     let panelDivLast = panelDivLength-1;
     let panelThemeBtnDiv = document.getElementsByClassName('panel_next');
-    
-  
-  
-  
+
     for ( let i=0; i<panelDivLength; i++ ) {
   
       // if is last or already contains panel_next and btn
-      if ( i == panelDivLast /*is last panel*/ || accordionPanel[i].lastElementChild.contains(panelThemeBtnDiv[i]) /*already has div*/ ) {
+      if ( i == panelDivLast || accordionPanel[i].lastElementChild.contains(panelThemeBtnDiv[i]) ) {
         // continue - avoid adding next_theme button
         continue;
       } else {
@@ -81,8 +78,8 @@ jQuery(document).ready(function() {
 
             jQuery('#add_accordion_ajax').click(function() {
                 jQuery( response ).appendTo('.accordion_container');
-                // run checkNextThemeBtn()
-                checkNextThemeBtn();
+                // run createNextThemeBtn()
+                createNextThemeBtn();
             })
         },
     });

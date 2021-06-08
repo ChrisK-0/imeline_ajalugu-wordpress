@@ -1,8 +1,8 @@
 import {globalVariables} from './constants';
 
 // declared function for the theme change buttons
-const nextTheme = () => {
-  // gathers active accordion details for nextTheme.js - inside function to get new values upon changes
+const configureNextTheme = () => {
+  // gathers active accordion details for configureNextTheme.js - inside function to get new values upon changes
   const activeHeader = document.getElementsByClassName("accordion_header-active");
   const activeThemeBtn = document.getElementsByClassName("themeBtnActive");
 
@@ -38,7 +38,7 @@ if ( globalVariables.accordionContainer ) {
     if ( event.target.className === 'accordion' ) {
       // Next theme button. Closest the current one and opens the next one
       for (const i of globalVariables.themeChangeBtn) {
-        i.onclick = nextTheme;
+        i.onclick = configureNextTheme;
       }
     }; // end if
   }); // end eventlistener

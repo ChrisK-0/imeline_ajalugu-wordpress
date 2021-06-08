@@ -190,7 +190,7 @@ function theme_enqueue_scripts() {
     /**
      * frontend ajax requests.
      */
-    wp_enqueue_script( 'frontend-ajax',  get_template_directory_uri() . '/assets/js/custom_accordion_ajax.js', array('jquery'), null, true );
+    wp_enqueue_script( 'frontend-ajax',  get_template_directory_uri() . '/assets/js/custom_theme_ajax.js', array('jquery'), null, true );
     wp_localize_script( 'frontend-ajax', 'frontend_ajax_object',
         array( 
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -235,11 +235,12 @@ function get_ajax_posts() {
 	$accordions_to_add = $amount_of_categories-$accordions_per_page;
 	//$generator_index = 1;
 
-	$pelmeen = 0;
+	// 
+	$accordion_array_index = 0;
 
 	// removes already existing accordions from the terms array
-	while ( $pelmeen != $accordions_per_page ) {
-		// break everything if no more accordions are existant
+	while ( $accordion_array_index != $accordions_per_page ) {
+		// break if no more accordions exist
 		if ( count($my_accordion_array) == 0  ) {
 			global $my_accordion_array;
 			$my_accordion_array = 0;
@@ -247,7 +248,7 @@ function get_ajax_posts() {
 		}
 
 		array_shift($my_accordion_array);
-		$pelmeen++;
+		$accordion_array_index++;
 	}
 
 
@@ -292,7 +293,7 @@ function get_ajax_posts() {
 
 						$content_to_strip = get_the_content();
 						$stripped_content = wp_strip_all_tags($content_to_strip);
-	
+
 						echo '
 		<label class="panel_content" for="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
 			<input type="checkbox" class="panel_input" id="accordion-'.$accordion_number.'_panel-'.$event_label_number.'">
