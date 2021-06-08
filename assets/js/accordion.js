@@ -14,7 +14,7 @@ if ( moreAccordionBtn ) {
   moreAccordionBtn.onclick =  disableMoreAccordionBtn;
 }
 
-// event delegation for accordions. required for accordions added with ajax
+// event delegation for accordions. Required for accordions added with ajax
 if ( globalVariables.accordionContainer ) {
   globalVariables.accordionContainer.addEventListener('click', event => {
     if ( event.target.className === 'accordion' ) {
@@ -53,7 +53,8 @@ const classToggler = (els, className, fnName) => {
   }
 }
 
-// close active accordions when extra accordions are added
+// Closes currently active accordions
+// Required for accordions added with ajax to avoid user confusion (can't click next theme button if accordions were created with an active header)
 const ajaxButton = document.getElementById('add_accordion_ajax');
 if ( ajaxButton ) {
     ajaxButton.addEventListener('click', event => {
@@ -64,7 +65,8 @@ if ( ajaxButton ) {
 
     // find the active class to close
     const isActiveHeader = currentlyActiveHeader[0].classList.contains('active');
-      if ( isActiveHeader ) {
+
+      if ( isActiveHeader  ) {
         // accordion active remove
         currentlyActiveHeader[0].classList.remove("active");
         activeHeaderChild.classList.remove("accordion_header-active");
