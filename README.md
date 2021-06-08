@@ -139,3 +139,10 @@ Plan was to make Event category taxonomy paged, but only posts can be made paged
 ### Made next_theme buddon re-work on new accordion page load
 
 Didn't have enough time to figure out how I could include accordion.js in the ajax request to run the button re-work function from that file and not have the long vanilla function in ajax jQuery file.
+
+## Day 42
+
+### 
+
+* Removed unused and commented code lines.
+* Accordions close when adding extra accordions to the page. Currently prints error in console if no accordions are open upon adding accordions.
