@@ -65,7 +65,7 @@ function createNextThemeBtn() {
       }
     } // for end
   
-  } // function end
+} // function end
 
 
 jQuery(document).ready(function() {
@@ -78,6 +78,7 @@ jQuery(document).ready(function() {
 
             jQuery('#add_accordion_ajax').click(function() {
                 jQuery( response ).appendTo('.accordion_container');
+
                 // run createNextThemeBtn()
                 createNextThemeBtn();
             })
