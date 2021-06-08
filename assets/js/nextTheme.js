@@ -2,7 +2,7 @@ import {globalVariables} from './constants';
 
 // declared function for the theme change buttons
 const configureNextTheme = () => {
-  // gathers active accordion details for configureNextTheme.js - inside function to get new values upon changes
+  // gathers active accordion details for configureNextTheme function - inside function to get new values upon changes
   const activeHeader = document.getElementsByClassName("accordion_header-active");
   const activeThemeBtn = document.getElementsByClassName("themeBtnActive");
 

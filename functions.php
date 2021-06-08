@@ -125,10 +125,8 @@ function create_categories_pattern_column( $columns ) {
 function categories_pattern_custom_columns( $value, $column, $term_id ) {
 	$get_custom_category = get_term($term_id /*, 'custom_category'*/);
 	$get_order_meta = get_field('category_order', $get_custom_category);
-	switch($column) {
-	  case 'pattern': 
+	if ($column == 'pattern') {
 		$value = $get_order_meta;
-	  break;
 	}
 	return $value;  
 }
@@ -190,7 +188,7 @@ function theme_enqueue_scripts() {
     /**
      * frontend ajax requests.
      */
-    wp_enqueue_script( 'frontend-ajax',  get_template_directory_uri() . '/assets/js/custom_theme_ajax.js', array('jquery'), null, true );
+    wp_enqueue_script( 'frontend-ajax',  get_template_directory_uri() . '/assets/js/customThemeAjax.js', array('jquery'), null, true );
     wp_localize_script( 'frontend-ajax', 'frontend_ajax_object',
         array( 
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -205,7 +203,6 @@ add_action('wp_ajax_get_ajax_posts', 'get_ajax_posts');
 add_action('wp_ajax_nopriv_get_ajax_posts', 'get_ajax_posts');
 // ADD ACCORDION
 function get_ajax_posts() {
-	global $my_accordion_array;
     // terms array - getting category names
     $my_accordion_array = get_terms( array(
         'taxonomy'   => 'categories',
@@ -220,22 +217,16 @@ function get_ajax_posts() {
 	$front_page_id = get_option('page_on_front');
     $accordions_per_page = get_field('accordions_per_page', $front_page_id);
 
-	// variable to help with adding to already existing accordions (label id...)
-	//$next_accordion_to_add = $accordions_per_page; deprecated
-
     // give accordion a number for uniqueness
-    $accordion_number = $accordions_per_page; // remove this chain
+    $accordion_number = $accordions_per_page;
 
 	// for if statements - counting already existing categories
     $current_accordion_number = $accordions_per_page;
     $published_categories = count($my_accordion_array);
 
 	// specifies the amount of accordions to add
-	$amount_of_categories = count($my_accordion_array);
-	$accordions_to_add = $amount_of_categories-$accordions_per_page;
-	//$generator_index = 1;
+	$accordions_to_add = $published_categories-$accordions_per_page;
 
-	// 
 	$accordion_array_index = 0;
 
 	// removes already existing accordions from the terms array
@@ -289,8 +280,6 @@ function get_ajax_posts() {
 					while ( $custom_events_posts->have_posts() ) {
 						$custom_events_posts->the_post();
 
-						// $response .= $accordions_per_page;
-
 						$content_to_strip = get_the_content();
 						$stripped_content = wp_strip_all_tags($content_to_strip);
 
@@ -324,30 +313,18 @@ function get_ajax_posts() {
 
 					$accordion_number++;
 
-					if ( $accordion_number != $published_categories && $accordion_number != $accordions_per_page ) {
-						echo '
-		<div class="panel_next">
-			<button class="next_theme">Järgmine teema</button>
-		</div>
-							'; // end echo
-					}
-				} /* else {
-					$response .= get_template_part('none');
-				} */ // end if
+
+				} // end if
 
 		echo '</div>'; // ends the div with class panel, which holds all the labels for an accordion
 
 				// increment current accordion number by 1 for each category loop
 				$current_accordion_number++;
 
-				// currently does not do what its supposed to
-				array_shift($my_accordion_array);
-
 	}; // end for each
 
 	wp_reset_query();
 
-    // exit;
     wp_die();
 }
 ?>

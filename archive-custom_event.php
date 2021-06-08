@@ -7,7 +7,7 @@
  * @package imeline-ajalugu
  */
 
-    // magic line
+    // this magic linetells WP that it is on the archive page and should get archive page metafields
     $reset_event_archive = new WP_Query( 'page_id='.event_archive()['id'] );
     $reset_event_archive -> the_post();
 
@@ -49,11 +49,7 @@
 
     // give accordion a number for uniqueness
     $accordion_number = 0;
-
-	// accordion per page limiter
-	$accordions_per_page = get_field('accordions_per_page');
     
-    $current_accordion_number = 0;
     $published_categories = count($terms);
 
 foreach( $terms as $term ) {
@@ -142,8 +138,7 @@ foreach( $terms as $term ) {
 
         echo '</div>'; // ends the div with class panel, which holds all the labels for an accordion
     }; // END IF
-    // increment current accordion number by 1 for each category loop
-    $current_accordion_number++;
+
 } // END TERMS FOREACH
 
 wp_reset_query();
@@ -160,7 +155,7 @@ wp_reset_query();
     </div>
 
 <?php
-    // this magic line sets the archive page to actually be archive page and get proper meta fields.
+    // this magic linetells WP that it is on the archive page and should get archive page metafields
     $reset_event_archive = new WP_Query( 'page_id='.event_archive()['id'] );
     $reset_event_archive -> the_post();
     

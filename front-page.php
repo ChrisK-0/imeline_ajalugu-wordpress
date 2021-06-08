@@ -117,7 +117,7 @@ foreach( $terms->get_terms() as $term ) {
 
         endwhile; 
         $accordion_number++;
-        
+
         if ( $accordion_number != $published_categories && $accordion_number != $accordions_per_page ) {
             echo '
         <div class="panel_next">
@@ -130,10 +130,6 @@ foreach( $terms->get_terms() as $term ) {
 
     }; // END IF
 
-    // potential for adding one at a time
-    // $current_taxo = $term;
-    // next($terms);
-
     wp_reset_postdata();
 
     // increment current accordion number by 1 for each category loop
@@ -145,13 +141,14 @@ foreach( $terms->get_terms() as $term ) {
 } // END TERMS FOREACH
 
 ?>
-    <!-- accordion_container div ending -->
-    </div>
+
+    </div><!-- accordion_container div ending -->
 
     <!-- Link to the accordion archive page -->
     <div class="page_view">
         <a class="page_view-all" href="<?php echo get_post_type_archive_link( 'custom_event' ); ?>">Vaata kõiki</a>
-        <?php // add more acccordions button not included when all accordions are already displayed
+        <?php 
+            // add more acccordions button not included when all accordions are already displayed
             if ( $accordions_per_page != 0 ) {
                 echo '
                 <!-- Add extra accordions -->
@@ -160,14 +157,6 @@ foreach( $terms->get_terms() as $term ) {
             }
         ?>
     </div>
-
-
-    <?php
-        // testing material for adding one accordion at a time
-        // echo "<script>console.log(".$current_taxo->name.");</script>";
-
-        //echo $current_taxo->name;
-    ?>
 
 <!-- Valmis! button div-->
     <div class="btn-wrapper">
