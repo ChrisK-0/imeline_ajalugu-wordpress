@@ -142,7 +142,13 @@ Didn't have enough time to figure out how I could include accordion.js in the aj
 
 ## Day 42
 
-### 
+### Removed previous unused lines
 
 * Removed unused and commented code lines.
 * Accordions close when adding extra accordions to the page. Currently prints error in console if no accordions are open upon adding accordions.
+
+## Day 43
+
+### Last Day
+
+My project ended in the middle of the week, because this is my last week and it's time to start working on my documents. I learned a lot during the process and even more about working on Wordpress by code and the theme process. Webpack was new to me and seemed like a nice feature that I would see myself using more of. Experienced a bit of Node.js, but need to spend more time with it. Got the chance to play with PHP, which is a weaker side of mine currently. I feel more brave when working with Javascript, but I need more practice with more difficult exercises.
