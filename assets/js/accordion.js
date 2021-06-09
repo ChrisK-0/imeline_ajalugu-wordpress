@@ -15,8 +15,9 @@ if ( moreAccordionBtn ) {
 }
 
 // event delegation for accordions. Required for accordions added with ajax
-if ( globalVariables.accordionContainer ) {
-  globalVariables.accordionContainer.addEventListener('click', event => {
+
+
+document.addEventListener('click', event => {
     if ( event.target.className === 'accordion' ) {
       for (const i of globalVariables.accordionBtn) {
         // class toggler function on accordion button click
@@ -29,14 +30,14 @@ if ( globalVariables.accordionContainer ) {
 
           const findAccordionLastChild = this.nextElementSibling.childElementCount - 1;
           const findDivThemeBtn = this.nextElementSibling.children[findAccordionLastChild];
-          const checkThemeBtnClass = findDivThemeBtn.classList.contains("theme_change");
+          const ifThemeBtnActive = findDivThemeBtn.classList.contains("theme_change");
 
           if (isActiveClass) {
             this.classList.toggle("active");
             this.nextElementSibling.classList.toggle("accordion_show");
             this.children[0].classList.toggle("accordion_header-active");
 
-            if (checkThemeBtnClass) {
+            if (ifThemeBtnActive) {
               findDivThemeBtn.children[0].classList.toggle("themeBtnActive");
             }
           }
@@ -45,7 +46,7 @@ if ( globalVariables.accordionContainer ) {
     }; // end if
 
   }); // end eventlistener
-}
+
 // template for class toggling
 const classToggler = (els, className, fnName) => {
   for (let i of els) {
@@ -59,6 +60,7 @@ const ajaxButton = document.getElementById('add_accordion_ajax');
 if ( ajaxButton ) {
     ajaxButton.addEventListener('click', event => {
 
+    if ( document.getElementsByClassName('active').length != 0 ) {
     const currentlyActiveHeader = document.getElementsByClassName('active');
     const currentlyActivePanel = currentlyActiveHeader[0].nextElementSibling;
     const activeHeaderChild = currentlyActiveHeader[0].children[0];
@@ -74,5 +76,6 @@ if ( ajaxButton ) {
         // panel active remove
         currentlyActivePanel.classList.remove('accordion_show');
       }
+    }
   }); // listener end
 } // if end
